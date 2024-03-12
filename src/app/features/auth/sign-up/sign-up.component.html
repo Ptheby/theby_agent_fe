@@ -1,1 +1,33 @@
-<p>sign-up works!</p>
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div formGroupName="user">
+    <h2>User</h2>
+
+    <label for="email">Email </label>
+    <input id="email" type="text" formControlName="email" />
+
+    <label for="password">Password </label>
+    <input id="password" type="password" formControlName="password" />
+
+    <label for="password">Confirm Password </label>
+    <input id="password" type="password" formControlName="password_confirmation" />
+  </div>
+
+    <div formGroupName="agent">
+      <h2>Agent</h2>
+      <label for="first_name">First Name: </label>
+      <input id="first_name" type="text" formControlName="first_name" />
+
+      <label for="last_name">Last Name: </label>
+      <input id="last_name" type="text" formControlName="last_name" />
+
+      <label for="state">State: </label>
+      <input id="state" type="text" formControlName="state" />
+
+      <label for="city">City: </label>
+      <input id="city" type="text" formControlName="city" />
+
+      <label for="npn">NPN: </label>
+      <input id="npn" type="text" formControlName="npn" />
+    </div>
+    <button type="submit" [disabled]="!signupForm.valid">Submit</button>
+</form>
