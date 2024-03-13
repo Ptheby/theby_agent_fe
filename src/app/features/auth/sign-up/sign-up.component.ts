@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -33,5 +34,7 @@ isLoading = false
   onSignup() {
     console.log(this.signupForm.value);
   }
-  
+  // onLogin() {
+  //   this.router.navigate(['./auth/login'])
+  // }
 }
