@@ -12,29 +12,29 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class SignUpComponent {
 isLoading = false
-
-
-
-  signupForm = new FormGroup({
-    user: new FormGroup({
-      email: new FormControl('',[Validators.required,Validators.email]),
-      password: new FormControl(['',Validators.required,
-      Validators.minLength(6)]),
-      password_confirmation: new FormControl('',Validators.required),
-    }),
-    agent: new FormGroup({
-      first_name: new FormControl('',Validators.required),
-      last_name: new FormControl('',Validators.required),
-      npn: new FormControl('',Validators.required),
-      state: new FormControl('',Validators.required),
-      city: new FormControl('',Validators.required),
-    }),
-  });
-
-  onSignup() {
-    console.log(this.signupForm.value);
-  }
-  // onLogin() {
-  //   this.router.navigate(['./auth/login'])
-  // }
 }
+
+
+//   signupForm = new FormGroup({
+//     user: new FormGroup({
+//       email: new FormControl('',[Validators.required,Validators.email]),
+//       password: new FormControl(['',Validators.required,
+//       Validators.minLength(6)]),
+//       password_confirmation: new FormControl('',Validators.required),
+//     }),
+//     agent: new FormGroup({
+//       first_name: new FormControl('',Validators.required),
+//       last_name: new FormControl('',Validators.required),
+//       npn: new FormControl('',Validators.required),
+//       state: new FormControl('',Validators.required),
+//       city: new FormControl('',Validators.required),
+//     }),
+//   });
+
+//   onSignup() {
+//     console.log(this.signupForm.value);
+//   }
+//   // onLogin() {
+//   //   this.router.navigate(['./auth/login'])
+//   // }
+// }
