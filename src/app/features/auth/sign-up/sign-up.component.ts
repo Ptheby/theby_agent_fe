@@ -25,6 +25,12 @@ export class SignUpComponent {
     email: '',
     password: '',
     password_confirmation: '',
+    agent: {
+      first_name:'',
+      last_name: '',
+      npn: '',
+      state:''
+    }
   };
 
   constructor(private router: Router, private authService: AuthService) {
