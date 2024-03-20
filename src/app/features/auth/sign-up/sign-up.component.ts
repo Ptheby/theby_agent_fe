@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
-
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -26,11 +25,11 @@ export class SignUpComponent {
     password: '',
     password_confirmation: '',
     agent: {
-      first_name:'',
+      first_name: '',
       last_name: '',
       npn: '',
-      state:''
-    }
+      state: '',
+    },
   };
 
   constructor(private router: Router, private authService: AuthService) {
@@ -52,8 +51,24 @@ export class SignUpComponent {
     });
   }
   onSignup() {
-    if (this.user.password === this.user.password_confirmation) {
-      this.authService.signUp(this.user).subscribe({
+    const userData = {
+      user: {
+        email: this.signupForm.get('user.email')?.value,
+        password: this.signupForm.get('user.password')?.value,
+        password_confirmation: this.signupForm.get('user.password_confirmation')
+          ?.value,
+      },
+      agent: {
+        first_name: this.signupForm.get('agent.first_name')?.value,
+        last_name: this.signupForm.get('agent.last_name')?.value,
+        npn: this.signupForm.get('agent.npn')?.value,
+        state: this.signupForm.get('agent.state')?.value,
+        city: this.signupForm.get('agent.city')?.value, // Assuming city is a valid field
+      },
+    };
+
+    if (userData.user.password === userData.user.password_confirmation) {
+      this.authService.signUp(userData).subscribe({
         next: (res: any) => {
           console.log('Sign up successful', res);
           // Redirect to login or another page
