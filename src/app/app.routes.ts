@@ -8,4 +8,22 @@ export const routes: Routes = [
         (c) => c.SignUpComponent
       ),
   },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./features/auth/login/login.component').then(
+        (c) => c.LoginComponent
+      ),
+  },
+  {
+    path: 'auth',
+    loadComponent: () =>
+      import('./features/auth/auth/auth.component').then(
+        (c) => c.AuthComponent
+      ),
+  },
+
+
+
+
 ];

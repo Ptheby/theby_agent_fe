@@ -9,13 +9,14 @@ import {
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from '../auth/auth.component';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
-  imports: [ReactiveFormsModule, CommonModule, HttpClientModule],
+  imports: [ReactiveFormsModule, CommonModule, HttpClientModule,AuthComponent],
 })
 export class SignUpComponent {
   isLoading = false;
