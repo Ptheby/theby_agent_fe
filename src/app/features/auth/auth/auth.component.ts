@@ -11,6 +11,7 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 })
 export class AuthComponent {
   showLoginForm: boolean = true;
+  constructor (){}
 
   toggleForm() {
     this.showLoginForm = !this.showLoginForm;
