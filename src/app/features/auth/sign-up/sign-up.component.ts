@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from '../auth/auth.component';
@@ -16,7 +16,7 @@ import { AuthComponent } from '../auth/auth.component';
   standalone: true,
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
-  imports: [ReactiveFormsModule, CommonModule, HttpClientModule,AuthComponent],
+  imports: [ReactiveFormsModule, CommonModule, HttpClientModule,AuthComponent,RouterLink],
 })
 export class SignUpComponent {
   isLoading = false;
