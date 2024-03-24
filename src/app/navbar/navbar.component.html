@@ -1,0 +1,36 @@
+
+<nav>
+<div></div>
+  <ul>
+
+    <li><a href="#0">Home</a></li>
+    <li><a href="#0">About</a></li>
+    <li>
+      <a href="#0">Agents</a>
+      <ul>
+        <li><a href="#0">Laura</a></li>
+        <li><a href="#0">Walker</a></li>
+        <li><a href="#0">McKenna</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#0">Services</a>
+      <ul>
+        <li><a href="#0">Print Design</a></li>
+        <li><a href="#0">Web Design</a></li>
+        <li><a href="#0">Mobile App Development</a></li>
+        <li><a href="#0">Contact</a></li>
+      </ul>
+    </li>
+    <div class="auth">
+
+      <hr>
+
+          <li><a routerLink="/login">Login</a></li>
+              <li><a [routerLink]="['/sign-up']" routerLinkActive="router-link-active" >Signup</a></li>
+              <li><a (click)="onLogout()" >Logout</a></li>
+
+            </div>
+
+  </ul>
+</nav>
