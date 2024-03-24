@@ -22,8 +22,13 @@ export const routes: Routes = [
         (c) => c.AuthComponent
       ),
   },
-
-
+{
+  path: 'dashboard',
+  loadComponent: () =>
+    import('./features/dashboard/dashboard.component').then(
+      (c) => c.DashboardComponent
+    ),
+},
 
 
 ];

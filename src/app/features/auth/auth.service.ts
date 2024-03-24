@@ -18,6 +18,24 @@ export class AuthService {
     });
   }
 
+  setToken(token: string) {
+		localStorage.setItem('token', token);
+		this.tokenSubject.next(token);
+	}
+  getToken() {
+		return localStorage.getItem('token');
+	}
+
+  isLoggedIn() {
+		return !!this.getToken();
+	}
+  logout() {
+		localStorage.removeItem('token');
+		this.tokenSubject.next(null);
+		this.router.navigate(['/login']);
+	}
+
+
   signUp(user: any) {
     return this.http.post('http://localhost:3000/users/create_with_agent', user)
   }}
