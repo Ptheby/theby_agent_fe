@@ -34,23 +34,25 @@
       <div class="form-content">
         <div class="login-form">
           <div class="title">Login</div>
-          <form action="#" (ngSubmit)="login()">
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="user-info" formGroupName="user">
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email"/>
+                <input type="text" formControlName="email" placeholder="Enter your email"/>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
                 <input
                   type="password"
                   placeholder="Enter your password"
-                  required
+                 formControlName="password"
                 />
               </div>
               <div class="text"><a href="#">Forgot password?</a></div>
               <div class="button input-box">
                 <input type="submit" value="Submit" />
+                </div>
               </div>
               <div class="text sign-up-text"  >
                 Don't have an account? <label for="flip"  [routerLink]="['/sign-up']" routerLinkActive="router-link-active"  >Signup now</label>
