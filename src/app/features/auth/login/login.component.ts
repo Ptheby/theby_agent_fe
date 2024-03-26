@@ -35,6 +35,14 @@ constructor(private authService: AuthService, private router: Router) {
 }
 
 login() {
+  const userData = {
+    user: {
+      email: this.loginForm.get('user.email')?.value,
+      password: this.loginForm.get('user.password')?.value,
+      password_confirmation: this.loginForm.get('user.password_confirmation')
+        ?.value
+
+  }};
   this.authService.login(this.email, this.password).subscribe({
     next: (res: any) => {
       console.log('Logged in with token:', res.token);
