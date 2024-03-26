@@ -13,8 +13,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-email: string = "";
-password: string= "";
+email= '';
+password= '';
 loginForm: FormGroup;
 
 constructor(private authService: AuthService, private router: Router) {
@@ -39,10 +39,9 @@ login() {
     user: {
       email: this.loginForm.get('user.email')?.value,
       password: this.loginForm.get('user.password')?.value,
-      password_confirmation: this.loginForm.get('user.password_confirmation')
-        ?.value
 
-  }};
+    }};
+  debugger
   this.authService.login(this.email, this.password).subscribe({
     next: (res: any) => {
       console.log('Logged in with token:', res.token);
