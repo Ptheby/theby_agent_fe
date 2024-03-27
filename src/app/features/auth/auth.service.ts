@@ -15,7 +15,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     const apiUrl =environment.apiUrl;
-    return this.http.post<{ token: string }>(apiUrl, {
+    return this.http.post<{ token: string }>(apiUrl+'/login', {
       email,
       password,
     });
