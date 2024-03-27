@@ -1,9 +1,6 @@
-
 <body>
   <nav>
-
     <ul>
-
       <li><a href="#0">Home</a></li>
       <li><a href="#0">Placeholder</a></li>
       <li>
@@ -24,17 +21,17 @@
         </ul>
       </li>
       <div class="auth">
+        <hr />
 
-        <hr>
-
-            <li><a routerLink="/login">Login</a></li>
-                <li><a [routerLink]="['/sign-up']" routerLinkActive="router-link-active" >Signup</a></li>
-                <li><a (click)="onLogout()" >Logout</a></li>
-                <li><a >Account</a></li>
-
-              </div>
-
+        <li *ngIf="!isAuthenticated"><a routerLink="/login">Login</a></li>
+        <li>
+          <a [routerLink]="['/sign-up']" routerLinkActive="router-link-active"
+            >Signup</a
+          >
+        </li>
+        <li *ngIf="isAuthenticated"><a (click)="onLogout()">Logout</a></li>
+        <li *ngIf="isAuthenticated"><a>Account</a></li>
+      </div>
     </ul>
   </nav>
 </body>
-
