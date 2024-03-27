@@ -1,6 +1,6 @@
 export const environment = {
   production:false,
-  apiUrl:'https://localhost:3000',
+  apiUrl:'http://127.0.0.1:3000',
   name: "development environment"
 };
 

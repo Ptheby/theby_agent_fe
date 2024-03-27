@@ -21,7 +21,7 @@ import { CommonModule } from '@angular/common';
 export class NavbarComponent implements OnInit {
   isAuthenticated = false;
 userEmail: any | null;
-  userSub: Subscription | undefined;
+  userSub: Subscription = new Subscription;;
 
 
 
@@ -35,7 +35,7 @@ constructor(
 ) {}
 ngOnInit() {
    this.userSub = this.authService.user.subscribe((user) => {
-      this.isAuthenticated = !user;
+      this.isAuthenticated = !!user;
 
     });
 
