@@ -24,13 +24,13 @@
         <hr />
 
         <li *ngIf="!isAuthenticated"><a routerLink="/login">Login</a></li>
-        <li>
+        <li *ngIf="!isAuthenticated">
           <a [routerLink]="['/sign-up']" routerLinkActive="router-link-active"
             >Signup</a
           >
         </li>
         <li *ngIf="isAuthenticated"><a (click)="onLogout()">Logout</a></li>
-        <li *ngIf="isAuthenticated"><a>Account</a></li>
+        <li *ngIf="isAuthenticated" routerLink="/account"><a>Account</a></li>
       </div>
     </ul>
   </nav>
