@@ -15,7 +15,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     const apiUrl =environment.apiUrl;
-    return this.http.post<{ token: string }>('apiUrl', {
+    return this.http.post<{ token: string }>(apiUrl, {
       email,
       password,
     });
@@ -41,5 +41,5 @@ export class AuthService {
 
   signUp(user: any) {
     const apiUrl =environment.apiUrl;
-    return this.http.post('apiUrl/users/create_with_agent', user)
+    return this.http.post(apiUrl+'/users/create_with_agent', user)
   }}
