@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 
 import { CustomerService } from './customer.service';
-import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-customer',
@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class CustomerComponent {
 
-  isLoading = false;
+
   addCustomerForm: FormGroup;
 
   constructor(
