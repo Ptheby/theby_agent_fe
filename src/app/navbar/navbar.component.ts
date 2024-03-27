@@ -35,8 +35,8 @@ constructor(
 ) {}
 ngOnInit() {
    this.userSub = this.authService.user.subscribe((user) => {
-      this.isAuthenticated = !!user;
-    
+      this.isAuthenticated = !user;
+
     });
 
 
