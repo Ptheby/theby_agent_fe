@@ -25,6 +25,13 @@ export const routes: Routes = [
         (c) => c.AuthComponent
       ),
   },
+  {
+    path: 'add-customer',
+    loadComponent: () =>
+      import('./features/customer/customer.component').then(
+        (c) => c.CustomerComponent
+      ),
+  },
 {
   path: 'dashboard',
   loadComponent: () =>
@@ -32,6 +39,6 @@ export const routes: Routes = [
       (c) => c.DashboardComponent
     ),
 },
-{ path: '', pathMatch: 'full', redirectTo: '/login' }, 
+{ path: '', pathMatch: 'full', redirectTo: '/login' },
 
 ];

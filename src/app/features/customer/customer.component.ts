@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+
 import { CustomerService } from './customer.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
+  imports:[ReactiveFormsModule],
+  standalone: true,
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent {
@@ -37,7 +40,7 @@ export class CustomerComponent {
     });
   }
 
-  onAddCustomer() {
+  addCustomer() {
     const customerData = this.addCustomerForm.get('customer')?.value;
     const addressData = this.addCustomerForm.get('address')?.value;
 
