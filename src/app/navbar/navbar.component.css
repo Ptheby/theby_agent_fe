@@ -15,7 +15,7 @@ nav {
   transform: translateX(-50%);
   display: inline-block;
   border: 2px solid #EBECF1;
-  border-radius: 15px;
+
   animation: slide-in 1s ease-out;
   width: 100%;
 }
@@ -52,7 +52,7 @@ ul {
       display: block;
       margin: 12px -12px;
       padding: 0;
-      background: #47d8d8;
+      background: #7d6bb3;
       border: 1px solid #F7C833;
       border-right: 2px solid #F89329;
       border-bottom: 2px solid #F89329;
@@ -72,6 +72,7 @@ ul {
       border: 2px solid #692be4;
       border-right: 2px solid #692be4;
       border-bottom: 2px solid #692be4;
+      
       a {
         color: #F9F8FD;
       }
@@ -110,5 +111,5 @@ justify-content: right;
   }
 
 .customer {
-  z-index:2;
+position:sticky;
 }

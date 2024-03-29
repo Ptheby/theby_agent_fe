@@ -17,8 +17,8 @@ img{
 
   }
 .container{
-
-  border-radius: 15px;
+z-index: 0;
+  border-radius: 10px;
   position: relative;
   max-width: 850px;
   width: 100%;
@@ -45,14 +45,14 @@ input{
   transition: all 1s ease;
   transform-origin: left;
   transform-style: preserve-3d;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 
 }
 .container #flip:checked ~ .cover{
   transform: rotateY(-180deg);
-  /* border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;*/
+  /* border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;*/
 }
  .container .cover .front,
  .container .cover .back{
@@ -61,15 +61,15 @@ input{
   left: 0;
   height: 100%;
   width: 100%;
-  /* border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px; */
+  /* border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px; */
 
 }
 .cover .back{
   transform: rotateY(180deg);
   backface-visibility: hidden;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 
 }
 .container .cover::before,
@@ -81,8 +81,8 @@ input{
   background: #ab7fe4;
   opacity: 0.5;
   z-index: 12;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 
 
 }
@@ -92,8 +92,8 @@ input{
   opacity: 0.3;
   transform: rotateY(180deg);
   backface-visibility: hidden;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 
 
 }
@@ -103,8 +103,8 @@ input{
   width: 100%;
   object-fit: cover;
   z-index: 10;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 
 }
 .container .cover .text{
@@ -116,8 +116,8 @@ input{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 
 
 
@@ -125,11 +125,11 @@ input{
 }
 .cover .text .text-1,
 .cover .text .text-2{
-  font-size: 26px;
-  font-weight: 600;
-  color: #ec1212;
+  font-size: 32px;
+  font-weight: 400;
+  color: #ffffff;
   text-align: center;
- text-shadow: #f00a0a;
+
 }
 .cover .text .text-2{
   font-size: 15px;
