@@ -17,7 +17,7 @@ apiUrl =environment.apiUrl;
   constructor(private http: HttpClient) { }
 
   addCustomer(customerData: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, customerData);
+    return this.http.post<any>(this.apiUrl+"/customers/create_with_address",customerData);
 
 
 

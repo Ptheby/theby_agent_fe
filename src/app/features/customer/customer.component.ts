@@ -1,20 +1,22 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { CustomerService } from './customer.service';
 
-
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  imports:[ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   standalone: true,
-  styleUrls: ['./customer.component.css']
+  styleUrls: ['./customer.component.css'],
 })
 export class CustomerComponent {
-
-
   addCustomerForm: FormGroup;
 
   constructor(
@@ -29,25 +31,25 @@ export class CustomerComponent {
         phone: new FormControl('', Validators.required),
         dob: new FormControl('', Validators.required),
         email: new FormControl('', Validators.required),
-      }),
-      address: new FormGroup({
-        street_number: new FormControl('', Validators.required),
-        street_name: new FormControl('', Validators.required),
-        city: new FormControl('', Validators.required),
-        state: new FormControl('', Validators.required),
-        zip: new FormControl('', Validators.required),
+
+        address_attributes: new FormGroup({
+          street_number: new FormControl('', Validators.required),
+          street_name: new FormControl('', Validators.required),
+          city: new FormControl('', Validators.required),
+          state: new FormControl('', Validators.required),
+          zip: new FormControl('', Validators.required),
+        }),
       }),
     });
   }
 
   addCustomer() {
-    const customerData = this.addCustomerForm.get('customer')?.value;
-    const addressData = this.addCustomerForm.get('address')?.value;
+    console.log('hello');
+    // const customerData = this.addCustomerForm.get('customer')?.value;
+    // const addressData = this.addCustomerForm.get('address')?.value;
 
-    const userData = {
-      customer: customerData,
-      address: addressData
-    };
+    const userData = this.addCustomerForm.value;
+    console.log(userData);
 
     this.customerService.addCustomer(userData).subscribe({
       next: (res: any) => {
@@ -58,8 +60,7 @@ export class CustomerComponent {
       error: (error: any) => {
         console.error('Failed to add customer', error);
         // Handle error (e.g., show error message)
-      }
+      },
     });
   }
 }
-

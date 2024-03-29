@@ -4,11 +4,12 @@
 body {
   font-family: "Poppins" , sans-serif;
   background-color: #ffffff;
+
 }
 
 nav {
   background-color: white;
-  position: absolute;
+  position: fixed;
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
@@ -107,4 +108,7 @@ display: flex;
 justify-content: right;
 
   }
-  
+
+.customer {
+  z-index:2;
+}
