@@ -34,7 +34,7 @@ export class CustomerService implements OnInit {
   }
 
   private fetchCustomers(): Observable<Customer[]> {
-    return this.http.get<any[]>(this.apiUrl + '/customers').pipe(
+    return this.http.get<Customer[]>(this.apiUrl + '/customers').pipe(
       map((response: any) => {
         const customers: Customer[] = response.customers; // Extract the customers array from the response
         return customers;

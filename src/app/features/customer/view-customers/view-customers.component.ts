@@ -5,13 +5,13 @@ import { Subscription } from 'rxjs';
 import { CommonModule, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-view-customer',
-  templateUrl: './view-customer.component.html',
-  styleUrls: ['./view-customer.component.css'],
+  selector: 'app-view-customers',
+  templateUrl: './view-customers.component.html',
+  styleUrls: ['./view-customers.component.css'],
   standalone: true,
   imports: [CommonModule]
 })
-export class ViewCustomerComponent implements OnInit, OnDestroy {
+export class ViewCustomersComponent implements OnInit, OnDestroy {
   customers: Customer[] = [];
   private subscription: Subscription | undefined;
 
@@ -39,7 +39,7 @@ export class ViewCustomerComponent implements OnInit, OnDestroy {
     this.customerService.getAllCustomers().subscribe({
       next: (data: Customer[]) => {
         this.customers = data;
-        console.log(this.customers);
+        console.log(this.customers.values);
       },
       error: (error: any) => {
         console.error('Error fetching customers:', error);

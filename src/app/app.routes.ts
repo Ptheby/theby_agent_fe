@@ -2,9 +2,6 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-
-
-
     path: 'sign-up',
     loadComponent: () =>
       import('./features/auth/sign-up/sign-up.component').then(
@@ -32,20 +29,19 @@ export const routes: Routes = [
         (c) => c.CustomerComponent
       ),
   },
-{
-  path: 'dashboard',
-  loadComponent: () =>
-    import('./features/dashboard/dashboard.component').then(
-      (c) => c.DashboardComponent
-    ),
-},
-{
-  path: 'customers',
-  loadComponent: () =>
-    import('./features/customer/view-customer/view-customer.component').then(
-      (c) => c.ViewCustomerComponent
-    ),
-},
-{ path: '', pathMatch: 'full', redirectTo: '/login' },
-
+  {
+    path: 'dashboard',
+    loadComponent: () =>
+      import('./features/dashboard/dashboard.component').then(
+        (c) => c.DashboardComponent
+      ),
+  },
+  {
+    path: 'customers',
+    loadComponent: () =>
+      import(
+        './features/customer/view-customers/view-customers.component'
+      ).then((c) => c.ViewCustomersComponent),
+  },
+  { path: '', pathMatch: 'full', redirectTo: '/login' },
 ];

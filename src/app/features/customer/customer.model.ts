@@ -2,8 +2,8 @@ import { Optional } from "@angular/core";
 
 export class Customer {
   id: number;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   phone: number;
   dob: Date;
   email: string;
@@ -16,8 +16,8 @@ export class Customer {
 
   constructor(
     id: number,
-    firstName: string,
-    lastName: string,
+    first_name: string,
+    last_name: string,
     phone: number,
     dob: Date,
     email: string,
@@ -29,8 +29,8 @@ export class Customer {
     @Optional()policyPath: string
   ) {
     this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
+    this.first_name = first_name;
+    this.last_name = last_name;
     this.phone = phone;
     this.dob = dob;
     this.email = email;

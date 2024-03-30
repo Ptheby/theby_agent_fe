@@ -5,13 +5,19 @@ import { AuthComponent } from './features/auth/auth/auth.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { environment } from '../environments/environment';
 import { Subscription } from 'rxjs';
-import { ViewCustomerComponent } from './features/customer/view-customer/view-customer.component';
+import { ViewCustomersComponent } from './features/customer/view-customers/view-customers.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HttpClientModule,AuthComponent,NavbarComponent,ViewCustomerComponent],
+  imports: [
+    RouterOutlet,
+    HttpClientModule,
+    AuthComponent,
+    NavbarComponent,
+    ViewCustomersComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'theby_agent_fe';
@@ -23,5 +29,3 @@ export class AppComponent {
     }
   }
 }
-
-
