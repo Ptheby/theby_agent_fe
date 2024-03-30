@@ -4,6 +4,7 @@ import { CustomerService } from '../customer.service';
 import { Subscription } from 'rxjs';
 import { CommonModule, NgFor } from '@angular/common';
 
+
 @Component({
   selector: 'app-view-customers',
   templateUrl: './view-customers.component.html',
