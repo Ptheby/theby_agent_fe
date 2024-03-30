@@ -1,1 +1,14 @@
-<p>view-customer works!</p>
+<!-- placeholder template as of 3/29/24 -->
+
+<div class="body">
+  <h2 >List of Customers</h2>
+  <button type="submit" (click)="getCustomers()"> Get Customers</button>
+
+  <ul>
+    <li *ngFor="let customer of customers">
+      {{ customer.firstName }} - {{ customer.email }} <!-- Display customer properties -->
+    </li>
+  </ul>
+</div>
+
+

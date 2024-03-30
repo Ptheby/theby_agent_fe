@@ -1,3 +1,5 @@
+import { Optional } from "@angular/core";
+
 export class Customer {
   id: number;
   firstName: string;
@@ -5,11 +7,12 @@ export class Customer {
   phone: number;
   dob: Date;
   email: string;
-  agentId: number;
-  insuranceCompanyId: number;
-  createdAt: Date;
-  updatedAt: Date;
+  agentId?: number;
+  insuranceCompanyId?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
   addressId: number;
+  policyPath?:string
 
   constructor(
     id: number,
@@ -18,11 +21,12 @@ export class Customer {
     phone: number,
     dob: Date,
     email: string,
-    agentId: number,
-    insuranceCompanyId: number,
-    createdAt: Date,
-    updatedAt: Date,
-    addressId: number
+    @Optional() agentId: number,
+    @Optional()insuranceCompanyId: number,
+    @Optional()createdAt: Date,
+    @Optional()updatedAt: Date,
+    @Optional()addressId: number,
+    @Optional()policyPath: string
   ) {
     this.id = id;
     this.firstName = firstName;
@@ -35,5 +39,6 @@ export class Customer {
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     this.addressId = addressId;
+    this.policyPath= policyPath
   }
 }

@@ -4,10 +4,12 @@ import { RouterOutlet } from '@angular/router';
 import { AuthComponent } from './features/auth/auth/auth.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { environment } from '../environments/environment';
+import { Subscription } from 'rxjs';
+import { ViewCustomerComponent } from './features/customer/view-customer/view-customer.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,HttpClientModule,AuthComponent,NavbarComponent],
+  imports: [RouterOutlet,HttpClientModule,AuthComponent,NavbarComponent,ViewCustomerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
