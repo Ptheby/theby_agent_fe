@@ -18,15 +18,15 @@ export class ViewCustomerComponent implements OnInit, OnDestroy {
   constructor(private customerService: CustomerService) {}
 
   ngOnInit(): void {
-    this.subscription = this.customerService.getAllCustomers().subscribe(
-      (data: Customer[]) => {
+    this.subscription = this.customerService.getAllCustomers().subscribe({
+      next: (data: Customer[]) => {
         this.customers = data;
-        console.log(this.customers)
+        console.log(this.customers);
       },
-      (error: any) => {
+      error: (error: any) => {
         console.error('Error fetching customers:', error);
       }
-    );
+    });
   }
 
   ngOnDestroy(): void {
@@ -34,8 +34,16 @@ export class ViewCustomerComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
   }
-  getCustomers(){
-    this.customerService.getAllCustomers()
-    console.log(this.customers)
+
+  getCustomers(): void {
+    this.customerService.getAllCustomers().subscribe({
+      next: (data: Customer[]) => {
+        this.customers = data;
+        console.log(this.customers);
+      },
+      error: (error: any) => {
+        console.error('Error fetching customers:', error);
+      }
+    });
   }
 }
