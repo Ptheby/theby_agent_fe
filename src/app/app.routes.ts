@@ -36,6 +36,13 @@ export const routes: Routes = [
         (c) => c.DashboardComponent
       ),
   },
+  // {
+  //   path: 'customer-details',
+  //   loadComponent: () =>
+  //     import('./features/dashboard/dashboard.component').then(
+  //       (c) => c.DashboardComponent
+  //     ),
+  // },
   {
     path: 'customers',
     loadComponent: () =>
