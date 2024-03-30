@@ -11,8 +11,8 @@ import { Customer } from './customer.model';
 export class CustomerService implements OnInit {
   apiUrl = environment.apiUrl;
 
-  onAddCustomer() {}
-  customers = [];
+
+  customers : Customer[] = [];
   constructor(private http: HttpClient) {}
 ngOnInit(): void {
     this.fetchCustomers();
