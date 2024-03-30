@@ -1,45 +1,42 @@
-body{margin-top:20px;
-  background:#eee;
+body {
+  margin-top: 20px;
+  background: #eee;
+}
+.container {
+  margin-bottom: 20%;
+  min-width: fit-content;
+  max-width: 80%;
+  border-radius: 10px;
 
+  margin-top: 150px;
+  right: 5%;
+  left: 5%;
+position: sticky;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card {
+  box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
 
-  }
-  .container{
-    margin-bottom: 20%;
-    min-width: fit-content;
-    max-width: 80%;
-    border-radius: 10px;
+.table-nowrap .table td,
+.table-nowrap .table th {
+  white-space: nowrap;
+}
 
-   top: 150px;
-    right: 5%;
-    left: 5%;
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-
-
-  }
-  .card {
-      box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
-  }
-
-  .table-nowrap .table td, .table-nowrap .table th {
-      white-space: nowrap;
-
-  }
-
-  .table>:not(caption)>*>* {
-      padding: 0.75rem 1.25rem;
-      border-bottom-width: 1px;
-  }
-  table th {
-      font-weight: 600;
-      background-color: #eeecfd !important;
-      width: 90%;
-
-      }
-      table tr {
-        background-color: rgba(213, 209, 223, 0.5);
-      }
-      .mb-0 {
-        font-size: 20px;
-      }
+.table > :not(caption) > * > * {
+  padding: 0.75rem 1.25rem;
+  border-bottom-width: 1px;
+}
+table th {
+  font-weight: 600;
+  background-color: #eeecfd !important;
+  width: 90%;
+}
+table tr {
+  background-color: rgba(213, 209, 223, 0.5);
+  
+}
+.mb-0 {
+  font-size: 20px;
+}
