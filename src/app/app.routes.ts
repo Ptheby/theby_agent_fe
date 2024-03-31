@@ -29,7 +29,7 @@ export const routes: Routes = [
       import('./features/customer/customer.component').then(
         (c) => c.CustomerComponent
       ),
-      canActivate:[AuthGuard],
+      // canActivate:[AuthGuard],
   },
   {
     path: 'dashboard',
