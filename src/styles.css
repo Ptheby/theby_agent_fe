@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files
 /* Google Font Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
@@ -50,9 +50,9 @@ input{
 }
 .container #flip:checked ~ .cover{
   transform: rotateY(-180deg);
-  /* border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;*/
-}
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+ }
  .container .cover .front,
  .container .cover .back{
   position: absolute;
@@ -60,11 +60,11 @@ input{
   left: 0;
   height: 100%;
   width: 100%;
-  /* border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px; */
+   border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 
-}
-.cover .back{
+ }
+ .cover .back{
   transform: rotateY(180deg);
   backface-visibility: hidden;
   border-top-right-radius: 15px;
