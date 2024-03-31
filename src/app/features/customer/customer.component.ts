@@ -28,7 +28,7 @@ export class CustomerComponent {
       customer: new FormGroup({
         first_name: new FormControl('', Validators.required),
         last_name: new FormControl('', Validators.required),
-        phone: new FormControl('', Validators.required),
+        phone: new FormControl('', [Validators.required,Validators.maxLength(13)]),
         dob: new FormControl('', Validators.required),
         email: new FormControl('', Validators.required),
 
