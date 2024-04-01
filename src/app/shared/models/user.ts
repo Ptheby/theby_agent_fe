@@ -16,3 +16,4 @@ export class User {
     this.updatedAt = updatedAt;
   }
 }
+// Do i need to save a token here?
