@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer.model';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -12,13 +12,14 @@ import { Observable } from 'rxjs';
   templateUrl: './customer-details.component.html',
   styleUrl: './customer-details.component.css'
 })
-export class CustomerDetailsComponent {
+export class CustomerDetailsComponent implements OnInit {
   editCustomerForm: FormGroup;
-
+customerId: number= 0;
   constructor(
     private router: Router,
 
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private route: ActivatedRoute
   ) {
     this.editCustomerForm = new FormGroup({
       customer: new FormGroup({
@@ -38,6 +39,12 @@ export class CustomerDetailsComponent {
       }),
     });
   }
+  ngOnInit(): void {
+      const idParam = this.route.snapshot.paramMap.get('id');
+      this.customerId = idParam ? +idParam :0;
+
+      this.customerService.getCustomerById(this.customerId).subscribe((customer) =>{console.log(customer)})
+  };
 
  editCustomer() {
     console.log('editting customer');

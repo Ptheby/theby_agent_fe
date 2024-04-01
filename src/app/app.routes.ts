@@ -53,7 +53,7 @@ export const routes: Routes = [
       ).then((c) => c.ViewCustomersComponent),
   },
   {
-    path: 'customer-details',
+    path: 'customer-details/:id',
     loadComponent: () =>
       import(
         './features/customer/customer-details/customer-details.component'
