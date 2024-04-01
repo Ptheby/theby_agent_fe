@@ -1,1 +1,161 @@
-<p>customer-details works!</p>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Customer Form</title>
+    <link rel="stylesheet" href="customer-details.component.css" />
+    <!-- Fontawesome CDN Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <!-- tried removing this to index.html but broke keeping in just for now -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <!-- This is an add customer form that i should have named differently in hindsight as far as the component name goes  -->
+  <body>
+    <div class="body">
+      <div class="container">
+        <input type="checkbox" id="flip" />
+        <div class="cover">
+           <div class="front">
+            <!-- <img
+              src="\assets\photos\addcustomer.jpg"
+              alt=""
+            /> -->
+             <div class="text">
+              <span class="text-1">Customer<br />Details</span>
+              <span class="text-2">Placeholder</span>
+            </div>
+          </div>
+          <div class="back">
+            <img class="backImg" src="images/backImg.jpg" alt="" />
+            <div class="text">
+              <span class="text-1"
+                >Complete miles of journey<br />with one step</span
+              >
+              <span class="text-2">Let's get started</span>
+            </div> -->
+          </div>
+        </div>
+        <div class="forms">
+          <div class="form-content">
+            <div class="addCustomer-form">
+              <div class="title">Edit Customer</div>
+
+              <form [formGroup]="editCustomerForm" (ngSubmit)="editCustomer()">
+                <div class="input-boxes">
+                  <div class="customer-info" formGroupName="customer">
+
+
+                    <div class="input-box">
+                      <i class="fas fa-user"></i>
+                      <input
+                        type="text"
+                        placeholder="Enter first name"
+                        formControlName="first_name"
+                      />
+                    </div>
+
+                    <div class="input-box">
+                      <i class="fas fa-user"></i>
+                      <input
+                        type="text"
+                        placeholder="Enter last name"
+                        formControlName="last_name"
+                      />
+
+
+                    </div>
+                    <div class="input-box">
+                      <i class="fas fa-calendar"></i>
+                      <input
+                        type="text"
+                        placeholder="yyyy-mm-dd"
+                        formControlName="dob"
+                      />
+                    </div>
+                    <div class="input-box">
+                      <i class="fas fa-user"></i>
+                      <input
+                        type="tel"
+                        placeholder="Enter phone #"
+                        formControlName="phone"
+                        maxlength="13"
+                      />
+                    </div>
+                    <div class="input-box">
+                      <i class="fas fa-envelope"></i>
+                      <input
+                        type="text"
+                        placeholder="Enter email"
+                        formControlName="email"
+                      />
+                    </div>
+                    <div class="agent-info" formGroupName="address_attributes">
+                      <div class="input-box">
+                        <i class="fas fa-user"></i>
+                        <input
+                          type="number"
+                          placeholder="Enter street number"
+                          formControlName="street_number"
+                        />
+                      </div>
+                      <div class="user-info">
+                        <div class="input-box">
+                          <i class="fas fa-user"></i>
+                          <input
+                            type="text"
+                            placeholder="Enter street name"
+                            formControlName="street_name"
+                          />
+                        </div>
+                        <div class="input-box">
+                          <i class="fas fa-user"></i>
+                          <input
+                            type="text"
+                            placeholder="Enter your city"
+                            formControlName="city"
+                          />
+                        </div>
+                        <div class="input-box">
+                          <i class="fas fa-user"></i>
+                          <input
+                            type="text"
+                            placeholder="Enter your state"
+                            formControlName="state"
+
+                          />
+                        </div>
+                        <div class="input-box">
+                          <i class="fas fa-user"></i>
+                          <input
+                            type="text"
+                            placeholder="Enter your zip code"
+                            formControlName="zip"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="button input-box">
+                    <input
+
+                  type="submit"
+
+                  value="Submit"
+                />
+                  </div>
+
+                  <!-- <div class="text sign-up-text">
+                Already have an account? <label for="flip" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login now</label>
+              </div> -->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

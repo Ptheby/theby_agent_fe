@@ -28,20 +28,29 @@
               </thead>
               <tbody>
                 <tr class="align-middle" *ngFor="let customer of customers">
-                  <td><span>
-                    {{customer.first_name}}
-                  </span>
+                  <td>
+                    <span>
+                      {{ customer.first_name }}
+                    </span>
                   </td>
-                  <td><span>{{customer.last_name}}</span></td>
-                  <td><span>{{customer.phone}}</span></td>
-                  <td><span>{{customer.email}}</span></td>
-                  <td><span>{{customer.agentId}}</span></td>
-                  <td><span>Policy Hello!</span></td>
+                  <td>
+                    <span>{{ customer.last_name }}</span>
+                  </td>
+                  <td>
+                    <span>{{ customer.phone }}</span>
+                  </td>
+                  <td>
+                    <span>{{ customer.email }}</span>
+                  </td>
+                  <td>
+                    <span>{{ customer.agentId }}</span>
+                  </td>
+                  <td><span>Get Policy Link</span></td>
                   <td class="text-end">
-                    <div class="drodown">
+
                       <a
-                        data-bs-toggle="dropdown"
-                        href="#"
+                        routerLink="/customer-details"
+                        routerLinkActive="router-link-active"
                         class="btn p-1"
                         aria-expanded="false"
                       >
@@ -56,7 +65,7 @@
                         >
                         <!-- <a href="#!" class="dropdown-item">Assign Agent</a> -->
                       </div>
-                    </div>
+
                   </td>
                 </tr>
               </tbody>

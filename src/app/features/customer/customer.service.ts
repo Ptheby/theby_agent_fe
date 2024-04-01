@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Customer } from './customer.model';
+import { UserAuthenticationData } from 'pusher-js/types/src/core/auth/options';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,15 @@ export class CustomerService implements OnInit {
     return this.http.post<any>(
       this.apiUrl + '/customers/create_with_address',
       customerData
+    );
+
+
+  }
+  editCustomer(id:any): Observable<any> {
+    const apiUrl = `${this.apiUrl}/customers/create_with_address/${id}`;
+    return this.http.put<any>(
+      this.apiUrl,
+      id
     );
 
     //same thing as the add but getting a getting a customer with a get method based on id
@@ -46,4 +56,5 @@ export class CustomerService implements OnInit {
       })
     );
   }
+
 }

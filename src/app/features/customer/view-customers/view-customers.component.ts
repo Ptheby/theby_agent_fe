@@ -3,6 +3,7 @@ import { Customer } from '../customer.model';
 import { CustomerService } from '../customer.service';
 import { Subscription } from 'rxjs';
 import { CommonModule, NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { CommonModule, NgFor } from '@angular/common';
   templateUrl: './view-customers.component.html',
   styleUrls: ['./view-customers.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule,RouterLink]
 })
 export class ViewCustomersComponent implements OnInit, OnDestroy {
   customers: Customer[] = [];
