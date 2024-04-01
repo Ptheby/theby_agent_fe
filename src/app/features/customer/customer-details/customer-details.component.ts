@@ -15,12 +15,38 @@ import { Observable } from 'rxjs';
 export class CustomerDetailsComponent implements OnInit {
   editCustomerForm: FormGroup;
 customerId: number= 0;
-  constructor(
+
+ngOnInit(): void {
+console.log("HELO")
+  const idParam = this.route.snapshot.paramMap.get('id');
+  this.customerId = idParam ? +idParam :0;
+console.log(this.customerId)
+  this.customerService.getCustomerById(this.customerId).subscribe((customer) =>{console.log(customer)})
+};
+
+
+
+
+
+
+
+constructor(
     private router: Router,
 
     private customerService: CustomerService,
     private route: ActivatedRoute
-  ) {
+  )
+
+
+
+
+
+
+
+
+
+
+  {
     this.editCustomerForm = new FormGroup({
       customer: new FormGroup({
         first_name: new FormControl('', Validators.required),
@@ -39,12 +65,7 @@ customerId: number= 0;
       }),
     });
   }
-  ngOnInit(): void {
-      const idParam = this.route.snapshot.paramMap.get('id');
-      this.customerId = idParam ? +idParam :0;
 
-      this.customerService.getCustomerById(this.customerId).subscribe((customer) =>{console.log(customer)})
-  };
 
  editCustomer() {
     console.log('editting customer');
