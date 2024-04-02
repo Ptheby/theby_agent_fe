@@ -1,28 +1,16 @@
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Edit Customer Form</title>
-    <link rel="stylesheet" href="customer-details.component.css" />
-    <!-- Fontawesome CDN Link -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <!-- tried removing this to index.html but broke keeping in just for now -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
+
   <!-- This is an add customer form that i should have named differently in hindsight as far as the component name goes  -->
   <body>
     <div class="body">
       <div class="container">
         <input type="checkbox" id="flip" />
         <div class="cover">
-           <div class="front">
+          <div class="front">
             <!-- <img
               src="\assets\photos\addcustomer.jpg"
               alt=""
             /> -->
-             <div class="text">
+            <div class="text">
               <span class="text-1">Customer<br />Details</span>
               <span class="text-2">Placeholder</span>
             </div>
@@ -34,19 +22,18 @@
                 >Complete miles of journey<br />with one step</span
               >
               <span class="text-2">Let's get started</span>
-            </div> -->
+            </div>
+            -->
           </div>
         </div>
         <div class="forms">
           <div class="form-content">
             <div class="addCustomer-form">
-              <div class="title">Edit Customer</div>
+              <div class="title">Customer Details</div>
 
               <form [formGroup]="editCustomerForm" (ngSubmit)="editCustomer()">
                 <div class="input-boxes">
                   <div class="customer-info" formGroupName="customer">
-
-
                     <div class="input-box">
                       <i class="fas fa-user"></i>
                       <input
@@ -63,8 +50,6 @@
                         placeholder="Enter last name"
                         formControlName="last_name"
                       />
-
-
                     </div>
                     <div class="input-box">
                       <i class="fas fa-calendar"></i>
@@ -123,7 +108,6 @@
                             type="text"
                             placeholder="Enter your state"
                             formControlName="state"
-
                           />
                         </div>
                         <div class="input-box">
@@ -139,12 +123,7 @@
                   </div>
 
                   <div class="button input-box">
-                    <input
-
-                  type="submit"
-
-                  value="Submit"
-                />
+                    <input type="submit" value="Submit" />
                   </div>
 
                   <!-- <div class="text sign-up-text">
@@ -158,4 +137,4 @@
       </div>
     </div>
   </body>
-</html>
+

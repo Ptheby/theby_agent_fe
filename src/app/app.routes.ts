@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AuthGuard } from './features/auth/auth/auth.guard';
 
 export const routes: Routes = [
+   { path: '', pathMatch: 'full', redirectTo: '/login' },
   {
     path: 'sign-up',
     loadComponent: () =>
@@ -38,13 +39,7 @@ export const routes: Routes = [
         (c) => c.DashboardComponent
       ),
   },
-  // {
-  //   path: 'customer-details',
-  //   loadComponent: () =>
-  //     import('./features/dashboard/dashboard.component').then(
-  //       (c) => c.DashboardComponent
-  //     ),
-  // },
+
   {
     path: 'customers',
     loadComponent: () =>
@@ -53,11 +48,11 @@ export const routes: Routes = [
       ).then((c) => c.ViewCustomersComponent),
   },
   {
-    path: 'customer-details/:id',
+    path: 'customer-info/:id',
     loadComponent: () =>
       import(
-        './features/customer/customer-details/customer-details.component'
-      ).then((c) => c.CustomerDetailsComponent),
-  },
-  { path: '', pathMatch: 'full', redirectTo: '/login' },
+        './features/customer/customer-info/customer-info.component'
+      ).then((c) => c.CustomerInfoComponent),
+  }
+
 ];

@@ -9,14 +9,14 @@ import { UserAuthenticationData } from 'pusher-js/types/src/core/auth/options';
 @Injectable({
   providedIn: 'root',
 })
-export class CustomerService implements OnInit {
+export class CustomerService  {
   apiUrl = environment.apiUrl;
 
   customers: Customer[] = [];
   constructor(private http: HttpClient) {}
-  ngOnInit(): void {
-    this.fetchCustomers();
-  }
+
+ 
+
   // add a customer with an observable returning a post method to my environmental api URL plus the path for the create action including address
   addCustomer(customerData: any): Observable<any> {
     return this.http.post<any>(
