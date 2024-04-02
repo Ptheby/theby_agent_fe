@@ -52,5 +52,12 @@ export const routes: Routes = [
         './features/customer/view-customers/view-customers.component'
       ).then((c) => c.ViewCustomersComponent),
   },
+  {
+    path: 'customer-details',
+    loadComponent: () =>
+      import(
+        './features/customer/customer-details/customer-details.component'
+      ).then((c) => c.CustomerDetailsComponent),
+  },
   { path: '', pathMatch: 'full', redirectTo: '/login' },
 ];

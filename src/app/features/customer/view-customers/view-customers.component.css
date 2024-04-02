@@ -24,6 +24,7 @@ body {
 .table-nowrap .table td,
 .table-nowrap .table th {
   white-space: nowrap;
+  padding-left: 5px;
 
 }
 
