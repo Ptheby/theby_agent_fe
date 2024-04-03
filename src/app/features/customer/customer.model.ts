@@ -11,7 +11,7 @@ export class Customer {
   phone: number;
   dob: Date;
   email: string;
-  agentId?: number;
+  agent_id?: number;
   insuranceCompanyId?: number;
   createdAt?: Date;
   updatedAt?: Date;
@@ -29,7 +29,7 @@ export class Customer {
     phone: number,
     dob: Date,
     email: string,
-    @Optional() agentId: number,
+    @Optional() agent_id: number,
     @Optional()insuranceCompanyId: number,
     @Optional()createdAt: Date,
     @Optional()updatedAt: Date,
@@ -45,7 +45,7 @@ export class Customer {
     this.phone = phone;
     this.dob = dob;
     this.email = email;
-    this.agentId = agentId;
+    this.agent_id = agent_id;
     this.insuranceCompanyId = insuranceCompanyId;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;

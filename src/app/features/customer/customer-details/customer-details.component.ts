@@ -28,7 +28,7 @@ export class CustomerDetailsComponent implements OnInit {
         .getCustomerById(customerId)
         .subscribe((data: Customer) => {
           this.selectedCustomer = data;
-          console.log(this.selectedCustomer.first_name)
+          console.log(this.selectedCustomer)
           // Set the customer details
         });
     });
