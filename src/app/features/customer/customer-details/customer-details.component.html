@@ -41,7 +41,7 @@
                     <div class="col-md-4">
                         <div class="profile-work">
                             <p>Links</p>
-                            <a href="">Address</a><br/>
+                            <a href="">Address ID{{selectedCustomer?.addressId}}</a><br/>
                             <a href="">Policy</a><br/>
                             <a href="">Agent</a><br/>
                             <a href="">Notes</a><br/>
@@ -59,7 +59,7 @@
                                                 <label>Full Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{selectedCustomer?.first_name}}</p>
+                                                <p>{{selectedCustomer?.first_name}}  {{selectedCustomer?.last_name}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -67,7 +67,7 @@
                                               <label>Email</label>
                                           </div>
                                           <div class="col-md-6">
-                                              <p>dilbertATgmail.com</p>
+                                              <p>{{selectedCustomer?.email}}</p>
                                           </div>
                                       </div>
                                         <div class="row">
@@ -75,7 +75,7 @@
                                                 <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>314-901-0292</p>
+                                                <p>{{selectedCustomer?.phone}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -83,7 +83,7 @@
                                                 <label>DOB</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>05-14-1982</p>
+                                                <p>{{selectedCustomer?.dob}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -91,31 +91,24 @@
                                                 <label>Agent</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Walker Theby</p>
+                                                <p>{{selectedCustomer?.agent?.firstName}}</p>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>State</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{selectedCustomer?.address?.state}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Insurance Co.</label>
+                                                <label>Customer ID #</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Liberty Mutual</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>123 456 7890</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Profession</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Web Developer and Designer</p>
+                                                <p>{{selectedCustomer?.id}}</p>
                                             </div>
                                         </div>
                             </div>

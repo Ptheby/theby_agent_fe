@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CustomerService } from '../../customer/customer.service';
+
 
 @Component({
   selector: 'app-agent-details',
@@ -12,7 +12,7 @@ export class AgentDetailsComponent {
 
 
 
-  constructor(private customerService: CustomerService) {
-    
+  constructor() {
+
   }
 }

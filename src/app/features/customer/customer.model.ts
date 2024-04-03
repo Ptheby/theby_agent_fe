@@ -1,4 +1,8 @@
 import { Optional } from "@angular/core";
+import { Address } from "../../shared/models/address";
+import { Agent } from "../../shared/models/agent";
+import { Policy } from "../../shared/models/policy";
+
 
 export class Customer {
   id: number;
@@ -12,7 +16,11 @@ export class Customer {
   createdAt?: Date;
   updatedAt?: Date;
   addressId: number;
-  policyPath?:string
+  policyPath?:string;
+  agent?:Agent;
+  address?:Address;
+  policy?:Policy
+
 
   constructor(
     id: number,
@@ -26,7 +34,10 @@ export class Customer {
     @Optional()createdAt: Date,
     @Optional()updatedAt: Date,
     @Optional()addressId: number,
-    @Optional()policyPath: string
+    @Optional()policyPath: string,
+    @Optional()agent:Agent,
+    @Optional()address:Address,
+    @Optional()policy:Policy,
   ) {
     this.id = id;
     this.first_name = first_name;
@@ -39,6 +50,9 @@ export class Customer {
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     this.addressId = addressId;
-    this.policyPath= policyPath
+    this.policyPath= policyPath;
+    this.agent= agent;
+    this.address=address;
+    this.policy=policy;
   }
 }
