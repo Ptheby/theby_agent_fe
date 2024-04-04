@@ -60,12 +60,16 @@ getAllAgents(): void {
   this.agentService.getAllAgents().subscribe({
     next: (agents: Agent[]) => {
       this.agents = agents;
-      console.log(this.agents.values);
+
     },
     error: (error: any) => {
       console.error('Error fetching agents:', error);
     }
   });
+
+}
+navigateToAgentDetails(id: number) {
+  this.router.navigate(['/agents',id]);
 
     }
 

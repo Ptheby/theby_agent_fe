@@ -4,9 +4,9 @@
       <li><a routerLink="/dashboard">Home</a></li>
       <li><a href="#0">Placeholder</a></li>
       <li>
-        <a href="#0">Agents</a>
+        <a class="agentslist" href="#0">Agents</a>
         <ul>
-          <li *ngFor="let agent of agents"><a routerLink="/agent-details/:id">{{agent.first_name}} {{agent.last_name}}</a></li>
+          <li *ngFor="let agent of agents"><a (click)="navigateToAgentDetails(agent.id)">{{agent.first_name}} {{agent.last_name}}</a></li>
 
         </ul>
       </li>

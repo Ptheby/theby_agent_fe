@@ -51,7 +51,7 @@ export class ViewCustomersComponent implements OnInit, OnDestroy {
       }
       navigateToCustomerDetails(id: number) {
         this.router.navigate(['/customers',id]);
-      
+        console.log(this.customers.values)
   }
 
 }

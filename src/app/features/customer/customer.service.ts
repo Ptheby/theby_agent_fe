@@ -40,7 +40,7 @@ export class CustomerService {
     return this.http.get<any>(`${this.apiUrl}/customers`).pipe(
       map((response: any) => {
         const customers: Customer[] = response.customers;
-        return customers;
+        return customers.reverse(); // Reverse the array before returning
       }),
       catchError((error) => {
         console.error('Error fetching customers:', error);
@@ -48,4 +48,5 @@ export class CustomerService {
       })
     );
   }
-}
+  }
+
