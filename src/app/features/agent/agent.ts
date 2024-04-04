@@ -1,5 +1,6 @@
 import { Optional } from '@angular/core';
 import { Customer } from '../customer/customer.model';
+import { User } from '../../shared/models/user';
 
 export class Agent {
   id: number;
