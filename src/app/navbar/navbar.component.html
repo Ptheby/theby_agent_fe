@@ -6,9 +6,8 @@
       <li>
         <a href="#0">Agents</a>
         <ul>
-          <li><a href="#0">Laura</a></li>
-          <li><a href="#0">Walker</a></li>
-          <li><a href="#0">McKenna</a></li>
+          <li *ngFor="let agent of agents"><a routerLink="/agent-details/:id">"{{agent.getFullName}}"</a></li>
+
         </ul>
       </li>
       <li>
@@ -36,7 +35,7 @@
         <li><a (click)="onLogout()">Logout</a></li>
           }
         <li routerLink="/account"><a>Account</a></li>
-        
+
       </div>
     </ul>
   </nav>

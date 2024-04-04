@@ -7,7 +7,7 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AgentServiceService {
+export class AgentService {
   apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
@@ -19,7 +19,9 @@ export class AgentServiceService {
   getAllAgents(): Observable<Agent[]> {
     return this.http.get<any>(`${this.apiUrl}/agents`).pipe(
       map((response: any) => {
-        const agents: Agent[] = response.agents;
+        console.log('Response:', response); // Log the entire response object
+        const agents: Agent[] = response.agents || []; // Use a fallback value if agents is undefined
+        console.log('Agents:', agents); // Log the agents array
         return agents;
       }),
       catchError((error) => {
@@ -28,6 +30,8 @@ export class AgentServiceService {
       })
     );
   }
+
+
   updateAgent(agentId: any, agentData: any): Observable<Agent> {
     return this.http.put<Agent>(
       `${this.apiUrl}/agents/${agentId}`,
@@ -38,7 +42,7 @@ export class AgentServiceService {
         return throwError(error);
       })
     );
-  }
+    }
 
 
 
