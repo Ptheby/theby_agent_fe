@@ -6,7 +6,7 @@
       <li>
         <a href="#0">Agents</a>
         <ul>
-          <li *ngFor="let agent of agents"><a routerLink="/agent-details/:id">"{{agent.getFullName}}"</a></li>
+          <li *ngFor="let agent of agents"><a routerLink="/agent-details/:id">{{agent.first_name}} {{agent.last_name}}</a></li>
 
         </ul>
       </li>

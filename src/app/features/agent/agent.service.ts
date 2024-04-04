@@ -17,10 +17,10 @@ export class AgentService {
   }
 
   getAllAgents(): Observable<Agent[]> {
-    return this.http.get<any>(`${this.apiUrl}/agents`).pipe(
-      map((response: any) => {
-        console.log('Response:', response); // Log the entire response object
-        const agents: Agent[] = response.agents || []; // Use a fallback value if agents is undefined
+    return this.http.get<Agent[]>(`${this.apiUrl}/agents`).pipe(
+      map((response: Agent[]) => {
+        console.log('Response:', response); // Log the entire response array
+        const agents: Agent[] = response || []; // Use a fallback value if response is undefined
         console.log('Agents:', agents); // Log the agents array
         return agents;
       }),
