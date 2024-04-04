@@ -41,7 +41,7 @@ body{
 }
 .profile-edit-btn{
   border: none;
-  border-radius: 1.5rem;
+  border-radius: 10px;
   width: 70%;
   padding: 2%;
   font-weight: 600;

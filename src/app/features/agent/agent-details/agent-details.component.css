@@ -9,14 +9,14 @@ body{
   border-radius: 0.5rem;
   background: #fff;
 }
-.policy-img{
+.agent-img{
   text-align: center;
 }
-.policy-img img{
+.agent-img img{
   width: 70%;
   height: 100%;
 }
-.policy-img .file {
+.agent-img .file {
   position: relative;
   overflow: hidden;
   margin-top: 0%;
@@ -26,7 +26,7 @@ body{
   font-size: 15px;
   background: #212529b8;
 }
-.policy-img .file input {
+.agent-img .file input {
   position: absolute;
   opacity: 0;
   right:-150px;

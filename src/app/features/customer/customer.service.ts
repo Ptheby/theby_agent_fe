@@ -19,6 +19,18 @@ export class CustomerService {
       customerData
     );
   }
+  updateCustomer(customerId: any, customerData: any): Observable<Customer> {
+    return this.http.put<Customer>(
+      `${this.apiUrl}/customers/${customerId}`,
+      customerData
+    ).pipe(
+      catchError((error) => {
+        console.error('Error updating customer:', error);
+        return throwError(error);
+      })
+    );
+  }
+
 
   getCustomerById(id: any): Observable<Customer> {
     return this.http.get<Customer>(`${this.apiUrl}/customers/${id}`);
