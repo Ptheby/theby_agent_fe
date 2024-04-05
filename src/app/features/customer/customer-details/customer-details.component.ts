@@ -8,7 +8,7 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-customer-details',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './customer-details.component.html',
   styleUrl: './customer-details.component.css',
 })
@@ -28,7 +28,7 @@ export class CustomerDetailsComponent implements OnInit {
         .getCustomerById(customerId)
         .subscribe((data: Customer) => {
           this.selectedCustomer = data;
-          console.log(this.selectedCustomer)
+          console.log(this.selectedCustomer);
           // Set the customer details
         });
     });
