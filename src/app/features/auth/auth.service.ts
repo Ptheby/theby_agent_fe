@@ -42,5 +42,7 @@ export class AuthService {
 
   signUp(user: any) {
     const apiUrl =environment.apiUrl;
+    console.log(this.user)
     return this.http.post(apiUrl+'/users/create_with_agent', user)
+
   }}
