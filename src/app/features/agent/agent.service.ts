@@ -31,19 +31,18 @@ export class AgentService {
     );
   }
 
-
   updateAgent(agentId: any, agentData: any): Observable<Agent> {
-    return this.http.put<Agent>(
-      `${this.apiUrl}/agents/${agentId}`,
-      agentData
-    ).pipe(
-      catchError((error) => {
-        console.error('Error updating agent:', error);
-        return throwError(error);
-      })
-    );
-    }
+    return this.http
+      .put<Agent>(`${this.apiUrl}/agents/${agentId}`, agentData)
+      .pipe(
+        catchError((error) => {
+          console.error('Error updating agent:', error);
+          return throwError(error);
+        })
+      );
+  }
 
-
-
+  assignAgent(agentId: any, customerId: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/agents/${agentId}/assign_customer/${customerId}`,agentId,customerId)
+  }
 }

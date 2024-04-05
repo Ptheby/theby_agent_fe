@@ -101,7 +101,7 @@
         <div class="cover">
           <div class="front">
             <img
-              src="\assets\photos\af5281e5-5174-43a4-a4e9-11d993cb35e8.jpg"
+              src="/src/assets/photos/Signup.jpg"
               alt=""
             />
             <div class="text">
@@ -110,7 +110,7 @@
             </div>
           </div>
           <div class="back">
-            <img class="backImg" src="images/backImg.jpg" alt="" />
+            <img class="backImg" src="/src/assets/photos/Signup.jpg" alt="" />
             <div class="text">
               <span class="text-1"
                 >Complete miles of journey<br />with one step</span
@@ -124,7 +124,7 @@
             <div class="signup-form">
               <div class="title">Agent Signup</div>
 
-              <form [formGroup]="signupForm" (ngSunup()bmit)="onSignup()">
+              <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
                 <div class="input-boxes">
                   <div class="agent-info" formGroupName="agent">
                     <div class="input-box">
@@ -190,7 +190,7 @@
                   </div>
                   <div class="button input-box">
                     <input
-                      [disabled]="!signupForm.valid"
+
                       type="submit"
                       value="Submit"
                     />
