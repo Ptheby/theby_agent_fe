@@ -1,123 +1,190 @@
 <body>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <div class="body">
-      <div class="container">
-        <input type="checkbox" id="flip" />
-        <div class="cover">
-          <div class="front">
-            <img
-              src="\assets\photos\Signup.jpg"
-              alt="Signup Art"
-            />
-            <div class="text">
-              <span class="text-1">Helping Agents<br />Help Customers</span>
-              <span class="text-2">Join us</span>
-            </div>
-          </div>
-          <div class="back">
-            <img class="backImg" src="images/backImg.jpg" alt="" />
-            <div class="text">
-              <span class="text-1"
-                >Complete miles of journey<br />with one step</span
-              >
-              <span class="text-2">Let's get started</span>
-            </div>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <div class="body">
+    <div class="container">
+      <input type="checkbox" id="flip" />
+      <div class="cover">
+        <div class="front">
+          <img src="\assets\photos\Signup.jpg" alt="Signup Art" />
+          <div class="text">
+            <span class="text-1">Helping Agents<br />Help Customers</span>
+            <span class="text-2">Join us</span>
           </div>
         </div>
-        <div class="forms">
-          <div class="form-content">
-            <div class="signup-form">
-              <div class="title">Agent Signup</div>
+        <div class="back">
+          <img class="backImg" src="images/backImg.jpg" alt="" />
+          <div class="text">
+            <span class="text-1"
+              >Complete miles of journey<br />with one step</span
+            >
+            <span class="text-2">Let's get started</span>
+          </div>
+        </div>
+      </div>
+      <div class="forms">
+        <div class="form-content">
+          <div class="signup-form">
+            <div class="title">Agent Signup</div>
 
-              <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
-                <div class="input-boxes">
-                  <div class="agent-info" formGroupName="agent">
-                    <div class="input-box">
-                      <i class="fas fa-user"></i>
-                      <input
-                        type="text"
-                        placeholder="Enter your first name"
-                        formControlName="first_name"
-                      />
-                    </div>
-                    <div class="input-box">
-                      <i class="fas fa-user"></i>
-                      <input
-                        type="text"
-                        placeholder="Enter your last name"
-                        formControlName="last_name"
-                      />
-                    </div>
-                    <div class="input-box">
-                      <i class="fas fa-user"></i>
-                      <input
-                        type="number"
-                        placeholder="Enter your national producer #"
-                        formControlName="npn"
-                      />
-                    </div>
-                    <div class="input-box">
-                      <i class="fas fa-user"></i>
-                      <input
-                        type="text"
-                        placeholder="Enter your state"
-                        formControlName="state"
-                      />
-                    </div>
-                  </div>
-                  <div class="agent-info" formGroupName="user">
-                    <div class="input-box">
-                      <i class="fas fa-envelope"></i>
-                      <input
-                        type="text"
-                        placeholder="Enter your email"
-                        formControlName="email"
-                      />
-                    </div>
-                    <div class="user-info">
-                      <div class="input-box">
-                        <i class="fas fa-lock"></i>
-                        <input
-                          type="password"
-                          placeholder="Enter your password"
-                          formControlName="password"
-                        />
-                      </div>
-                      <div class="input-box">
-                        <i class="fas fa-lock"></i>
-                        <input
-                          type="password"
-                          placeholder="Re-enter your password"
-                          formControlName="password_confirmation"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="button input-box">
+            <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+              <div class="input-boxes">
+                <div class="agent-info" formGroupName="agent">
+                  <div class="input-box">
+                    <i class="fas fa-user"></i>
+
                     <input
-                      [disabled]="!signupForm.valid"
-                      type="submit"
-                      value="Submit"
+                      type="text"
+                      placeholder="Enter your first name"
+                      formControlName="first_name"
                     />
-                  </div>
 
-                  <div class="text sign-up-text">
-                    Already have an account?
-                    <label
-                      for="flip"
-                      [routerLink]="['/login']"
-                      routerLinkActive="router-link-active"
-                      >Login now</label
+                    <span
+                      *ngIf="
+                        !signupForm.get('agent.first_name')?.valid &&
+                        signupForm.get('agent.first_name')?.touched
+                      "
+                      class="help-block"
+                      >Enter a first name</span
+                    >
+                    <!-- <br
+                            *ngIf="
+                              !signupForm.get('agent.first_name')?.valid &&
+                              signupForm.get('agent.first_name')?.touched
+                            "
+                          /> -->
+                  </div>
+                  <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input
+                      type="text"
+                      placeholder="Enter your last name"
+                      formControlName="last_name"
+                    />
+                    <span
+                      *ngIf="
+                        !signupForm.get('agent.last_name')?.valid &&
+                        signupForm.get('agent.last_name')?.touched
+                      "
+                      class="help-block"
+                      >Enter a last name</span
+                    >
+                  </div>
+                  <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input
+                      type="number"
+                      placeholder="Enter your national producer #"
+                      formControlName="npn"
+                    />
+                    <span
+                      *ngIf="
+                        !signupForm.get('agent.npn')?.valid &&
+                        signupForm.get('agent.npn')?.touched
+                      "
+                      class="help-block"
+                      >Enter NPN</span
+                    >
+                  </div>
+                  <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input
+                      type="text"
+                      placeholder="Enter your state"
+                      formControlName="state"
+                    />
+                    <span
+                      *ngIf="
+                        !signupForm.get('agent.state')?.valid &&
+                        signupForm.get('agent.state')?.touched
+                      "
+                      class="help-block"
+                      >Enter your state</span
                     >
                   </div>
                 </div>
-              </form>
-            </div>
+                <div class="agent-info" formGroupName="user">
+                  <div class="input-box">
+                    <i class="fas fa-envelope"></i>
+                    <input
+                      type="text"
+                      placeholder="Enter your email"
+                      formControlName="email"
+                    />
+                    <span
+                      *ngIf="
+                        !signupForm.get('agent.email')?.valid &&
+                        signupForm.get('agent.email')?.touched
+                      "
+                      class="help-block"
+                      >Enter your email</span
+                    >
+                  </div>
+                  <div class="user-info">
+                    <div class="input-box">
+                      <i class="fas fa-lock"></i>
+                      <input
+                        type="password"
+                        placeholder="Enter your password"
+                        formControlName="password"
+                      />
+                      <span
+                        *ngIf="
+                          !signupForm.get('agent.password')?.valid &&
+                          signupForm.get('agent.password')?.touched
+                        "
+                        class="help-block"
+                        >Enter a password</span
+                      >
+                    </div>
+                    <div class="input-box">
+                      <i class="fas fa-lock"></i>
+                      <input
+                        type="password"
+                        placeholder="Re-enter your password"
+                        formControlName="password_confirmation"
+                      />
+                      <span
+                        *ngIf="
+                          !signupForm.get('agent.password_confirmation')
+                            ?.valid &&
+                          signupForm.get('agent.password_confirmation')?.touched
+                        "
+                        class="help-block"
+                        >Confirm your password</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                @if (signupForm.valid) {
+                <div class="button input-box">
+                  <input
+                    [disabled]="!signupForm.valid"
+                    type="submit"
+                    value="Submit"
+                  />
+                </div>
+                }
+
+                <div class="text sign-up-text">
+                  Already have an account?
+                  <label
+                    for="flip"
+                    [routerLink]="['/login']"
+                    routerLinkActive="router-link-active"
+                    >Login now</label
+                  >
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    <!-- <div class="login-form">
+  </div>
+  <!-- <div class="login-form">
   <div class="title">Login</div>
   <form action="#">
     <div class="input-boxes">
@@ -143,5 +210,4 @@
     </div>
   </form>
 </div> -->
-  </body>
-
+</body>

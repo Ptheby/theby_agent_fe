@@ -32,6 +32,7 @@ export class SignUpComponent {
       state: '',
     },
   };
+name: any;
 
   constructor(private router: Router, private authService: AuthService) {
     this.signupForm = new FormGroup({
