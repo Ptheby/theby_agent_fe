@@ -1,141 +1,206 @@
-
-  <!-- This is an add customer form that i should have named differently in hindsight as far as the component name goes  -->
-  <body>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <div class="body">
-      <div class="container">
-        <input type="checkbox" id="flip" />
-        <div class="cover">
-          <div class="front">
-            <!-- <img
-              src="\assets\photos\addcustomer.jpg"
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="body">
+  <div class="container emp-profile">
+    <form method="post">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="policy-img">
+            <img
+              src="https://cdn.sanity.io/images/cb8i8bbb/production/b270c3b5cbe5a561a4bba7409c1ad03841e316df-1100x550.svg?w=1920&q=75&fit=clip&auto=format"
               alt=""
-            /> -->
-            <div class="text">
-              <span class="text-1">Customer<br />Details</span>
-              <span class="text-2">Placeholder</span>
+            />
+            <div class="file btn btn-lg btn-primary">
+              Upload Policy
+              <input type="file" name="file" />
             </div>
-          </div>
-          <div class="back">
-            <img class="backImg" src="images/backImg.jpg" alt="" />
-            <div class="text">
-              <span class="text-1"
-                >Complete miles of journey<br />with one step</span
-              >
-              <span class="text-2">Let's get started</span>
-            </div>
-            -->
           </div>
         </div>
-        <div class="forms">
-          <div class="form-content">
-            <div class="addCustomer-form">
-              <div class="title">Customer Details</div>
+        <div class="col-md-6">
+          <div class="profile-head">
+            <h5></h5>
 
-              <form [formGroup]="editCustomerForm" (ngSubmit)="editCustomer()">
-                <div class="input-boxes">
-                  <div class="customer-info" formGroupName="customer">
-                    <div class="input-box">
-                      <i class="fas fa-user"></i>
-                      <input
-                        type="text"
-                        placeholder="Enter first name"
-                        formControlName="first_name"
-                      />
-                    </div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  id="home-tab"
+                  data-toggle="tab"
+                  href="#home"
+                  role="tab"
+                  aria-controls="home"
+                  aria-selected="true"
+                  >Customer Profile</a
+                >
+              </li>
+              <!-- <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                </li> -->
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <input
+            type="submit"
+            routerLink="/edit-customer"
+            routerLinkActive="router-link-active"
+            class="profile-edit-btn"
+            name="btnAddMore"
+            value="Edit "
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="profile-work">
+            <p>Links</p>
+            <a href="change to/agent">Assign Agent</a><br />
 
-                    <div class="input-box">
-                      <i class="fas fa-user"></i>
-                      <input
-                        type="text"
-                        placeholder="Enter last name"
-                        formControlName="last_name"
-                      />
-                    </div>
-                    <div class="input-box">
-                      <i class="fas fa-calendar"></i>
-                      <input
-                        type="text"
-                        placeholder="yyyy-mm-dd"
-                        formControlName="dob"
-                      />
-                    </div>
-                    <div class="input-box">
-                      <i class="fas fa-user"></i>
-                      <input
-                        type="tel"
-                        placeholder="Enter phone #"
-                        formControlName="phone"
-                        maxlength="13"
-                      />
-                    </div>
-                    <div class="input-box">
-                      <i class="fas fa-envelope"></i>
-                      <input
-                        type="text"
-                        placeholder="Enter email"
-                        formControlName="email"
-                      />
-                    </div>
-                    <div class="agent-info" formGroupName="address_attributes">
-                      <div class="input-box">
-                        <i class="fas fa-user"></i>
-                        <input
-                          type="number"
-                          placeholder="Enter street number"
-                          formControlName="street_number"
-                        />
-                      </div>
-                      <div class="user-info">
-                        <div class="input-box">
-                          <i class="fas fa-user"></i>
-                          <input
-                            type="text"
-                            placeholder="Enter street name"
-                            formControlName="street_name"
-                          />
-                        </div>
-                        <div class="input-box">
-                          <i class="fas fa-user"></i>
-                          <input
-                            type="text"
-                            placeholder="Enter your city"
-                            formControlName="city"
-                          />
-                        </div>
-                        <div class="input-box">
-                          <i class="fas fa-user"></i>
-                          <input
-                            type="text"
-                            placeholder="Enter your state"
-                            formControlName="state"
-                          />
-                        </div>
-                        <div class="input-box">
-                          <i class="fas fa-user"></i>
-                          <input
-                            type="text"
-                            placeholder="Enter your zip code"
-                            formControlName="zip"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <a href="change to/policy">Policy</a><br />
 
-                  <div class="button input-box">
-                    <input type="submit" value="Submit" />
-                  </div>
-
-                  <!-- <div class="text sign-up-text">
-                Already have an account? <label for="flip" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login now</label>
-              </div> -->
+            <a href="chagne to open notepad">Notes</a><br />
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="tab-content profile-tab" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="home"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+            >
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Full Name:</label>
                 </div>
-              </form>
+                <div class="col-md-6">
+                  <p>
+                    {{ selectedCustomer?.first_name }}
+                    {{ selectedCustomer?.last_name }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Email:</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ selectedCustomer?.email }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Phone:</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ selectedCustomer?.phone }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>DOB:</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ selectedCustomer?.dob }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Policy Expiration:</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ selectedCustomer?.policy?.expDate }}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Address:</label>
+                </div>
+                <div class="col-md-6">
+                  <p><a href="chage to /address">View Address</a><br /></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Agent #:</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ selectedCustomer?.agent_id }}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Customer ID #:</label>
+                </div>
+                <div class="col-md-6">
+                  <p>{{ selectedCustomer?.id }}</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="profile"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+            >
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Experience</label>
+                </div>
+                <div class="col-md-6">
+                  <p>Expert</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Hourly Rate</label>
+                </div>
+                <div class="col-md-6">
+                  <p>10$/hr</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Total Projects</label>
+                </div>
+                <div class="col-md-6">
+                  <p>230</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>English Level</label>
+                </div>
+                <div class="col-md-6">
+                  <p>Expert</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Availability</label>
+                </div>
+                <div class="col-md-6">
+                  <p>6 months</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Your Bio</label><br />
+                  <p>Your detail description</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </body>
-
+    </form>
+  </div>
+</div>
