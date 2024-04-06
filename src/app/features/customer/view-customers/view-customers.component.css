@@ -15,6 +15,11 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+.table{
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+}
 
 .card {
   box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
@@ -24,7 +29,9 @@ body {
 .table-nowrap .table td,
 .table-nowrap .table th {
   white-space: nowrap;
-
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 10px;
 }
 
 
