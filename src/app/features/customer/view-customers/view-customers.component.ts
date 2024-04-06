@@ -3,7 +3,7 @@ import { Customer } from '../customer.model';
 import { CustomerService } from '../customer.service';
 import { Subscription } from 'rxjs';
 import { CommonModule, NgFor } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class ViewCustomersComponent implements OnInit, OnDestroy {
   customers: Customer[] = [];
   private subscription: Subscription | undefined;
 
-  constructor(private customerService: CustomerService) {}
+  constructor(private customerService: CustomerService, private router: Router) {}
 
   ngOnInit(): void {
     this.subscription = this.customerService.getAllCustomers().subscribe({
@@ -47,5 +47,11 @@ export class ViewCustomersComponent implements OnInit, OnDestroy {
         console.error('Error fetching customers:', error);
       }
     });
+
+      }
+      navigateToCustomerDetails(id: number) {
+        this.router.navigate(['/customers',id]);
+        console.log(this.customers.values)
   }
+
 }

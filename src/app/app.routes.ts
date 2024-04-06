@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AuthGuard } from './features/auth/auth/auth.guard';
+
 
 export const routes: Routes = [
    { path: '', pathMatch: 'full', redirectTo: '/login' },
@@ -48,11 +48,18 @@ export const routes: Routes = [
       ).then((c) => c.ViewCustomersComponent),
   },
   {
-    path: 'customer-info/:id',
+    path: 'customers/:id',
     loadComponent: () =>
       import(
-        './features/customer/customer-info/customer-info.component'
-      ).then((c) => c.CustomerInfoComponent),
-  }
-
+        './features/customer/customer-details/customer-details.component'
+      ).then((c) => c.CustomerDetailsComponent),
+  },
+  {
+    path: 'agents/:id',
+    loadComponent: () =>
+      import(
+        './agent/agent-details/agent-details.component'
+      ).then((c) => c.AgentDetailsComponent),
+  },
+  { path: '', pathMatch: 'full', redirectTo: '/login' },
 ];

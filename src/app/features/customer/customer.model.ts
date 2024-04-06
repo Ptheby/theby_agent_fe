@@ -1,6 +1,6 @@
 import { Optional } from '@angular/core';
 import { Address } from '../../shared/models/address';
-import { Agent } from '../../shared/models/agent';
+import { Agent } from '../../agent/agent';
 import { Policy } from '../../shared/models/policy';
 
 export class Customer {
