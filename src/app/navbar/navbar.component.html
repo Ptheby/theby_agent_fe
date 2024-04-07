@@ -3,7 +3,7 @@
     <ul>
       <li><a routerLink="/dashboard">Home</a></li>
       <li><a href="#0">Placeholder</a></li>
-      <li>
+      @if(isLoggedIn()){  <li>
         <a class="agentslist" href="#0">Agents</a>
         <ul>
           <li *ngFor="let agent of agents">
@@ -12,8 +12,8 @@
             >
           </li>
         </ul>
-      </li>
-      <li>
+      </li>}
+      @if(isLoggedIn()){ <li>
         <a href="#0">Customers</a>
         <ul>
           <li><a routerLink="/add-customer">Add Customer</a></li>
@@ -22,7 +22,7 @@
           <li><a routerLink="/customers">All Customers</a></li>
           <!-- <li><a href="#0">PH</a></li> -->
         </ul>
-      </li>
+      </li>}
       <div class="auth">
         <hr />
         @if(isLoggedIn()){
@@ -38,7 +38,7 @@
           >
         </li>
         }
-       
+
       </div>
     </ul>
   </nav>
