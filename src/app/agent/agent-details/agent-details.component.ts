@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Agent } from '../agent';
-
+import { CustomerService } from '../../features/customer/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgentService } from '../agent.service';
 
@@ -17,17 +17,24 @@ export class AgentDetailsComponent implements OnInit {
   constructor(
     private agentService: AgentService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private customerService:CustomerService
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const agentId = +params['id']; // Extract agent ID from route parameters
       console.log('agentID:', agentId);
-      this.agentService.getAgentById(agentId).subscribe((data: Agent) => {
-        this.selectedAgent = data;
-        console.log(this.selectedAgent);
-        // Set the customer details
-      });
+      this.agentService
+        .getAgentById(agentId)
+        .subscribe((data: Agent) => {
+          this.selectedAgent = data;
+          console.log(this.selectedAgent)
+          // Set the customer details
+        });
     });
   }
 }
+
+
+
+
