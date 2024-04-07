@@ -56,7 +56,7 @@ export const routes: Routes = [
   },
   {
     path: 'agent-assignment',
-    loadChildren: () => import('./agent/agent-assignment/agent-assignment.component').then(m => m.AgentAssignmentComponent)
+    loadComponent: () => import('./agent/agent-assignment/agent-assignment.component').then(m => m.AgentAssignmentComponent)
   },
 
 

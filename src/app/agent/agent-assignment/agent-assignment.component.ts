@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AgentService } from '../agent.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
+
 @Component({
   selector: 'app-agent-assignment',
   standalone: true,
@@ -19,7 +20,19 @@ export class AgentAssignmentComponent {
     private router: Router,
     private routerLink: RouterLink
   ) {}
-
+  assignAgentToCustomer(agentId: any, customerId: any): void {
+    this.agentService.assignAgent(agentId, customerId)
+      .subscribe(
+        response => {
+          // Handle success response
+          console.log('Agent assigned successfully:', response);
+        },
+        error => {
+          // Handle error
+          console.error('Error assigning agent:', error);
+        }
+      );
+  }
 
 
 }
