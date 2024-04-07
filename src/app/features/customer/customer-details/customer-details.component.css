@@ -1,5 +1,5 @@
-body {
-  background: -webkit-linear-gradient(left, #4c3bec, #00c6ff);
+.body {
+  background: -webkit-linear-gradient(left, #4c3bec, #fdfdfd);
 }
 button {
   margin-bottom: 4px;

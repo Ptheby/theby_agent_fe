@@ -1,6 +1,7 @@
-body {
+.body {
   margin-top: 20px;
   background: #eee;
+  background: -webkit-linear-gradient(left, #4c3bec, #fdfdfd);
 
 }
 .container {
