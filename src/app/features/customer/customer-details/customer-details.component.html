@@ -32,7 +32,6 @@
                   class="nav-link active"
                   id="home-tab"
                   data-toggle="tab"
-
                   role="tab"
                   aria-controls="home"
                   aria-selected="true"
@@ -62,12 +61,17 @@
             <p>Links</p>
             <button (click)="toggleAssignAgent()">Assign Agent</button><br />
             @if(showAssignAgent){
-              <app-agent-assignment></app-agent-assignment>
+            <app-agent-assignment></app-agent-assignment>
             }
 
-   
+            <button href="CHANGE">Policy</button><br />
+            <button>Notes</button><br />
+            <br />
+            <br />
 
-            <button href="CHANGE">Policy</button><br> Notes<br />
+            <button class="confirm-delete" (click)="confirmDelete(selectedCustomer?.id)">
+              Delete Customer
+            </button>
           </div>
         </div>
         <div class="col-md-8">
