@@ -48,4 +48,12 @@ export class CustomerService {
       })
     );
   }
+  deleteCustomer(customerId: any): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/customers/${customerId}`).pipe(
+      catchError((error) => {
+        console.error('Error deleting customer:', error);
+        return throwError(error);
+      })
+    );
+  }
   }

@@ -1,6 +1,14 @@
 body{
   background: -webkit-linear-gradient(left, #4c3bec, #00c6ff);
 }
+button{
+  margin-bottom: 4px;
+  padding: 3px;
+  color:#4c3bec ;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 5px;
+}
 .emp-profile{
   padding: 2%;
 
