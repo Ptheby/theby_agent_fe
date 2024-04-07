@@ -1,6 +1,8 @@
 import { Optional } from '@angular/core';
 import { Customer } from '../features/customer/customer.model';
-import { User } from '../shared/models/user';
+import { User } from '../features/auth/user';
+import { InsuranceCompany } from '../shared/models/insurance_companies';
+
 
 export class Agent {
   id: number;
@@ -12,6 +14,8 @@ export class Agent {
   createdAt?: Date;
   updatedAt?: Date;
   customers?: Customer[];
+  user?: User;
+  insuranceCompanies?: InsuranceCompany[]; // Include the insurance companies association
 
   constructor(
     id: number,
@@ -22,7 +26,9 @@ export class Agent {
     userId: number,
     @Optional() createdAt: Date,
     @Optional() updatedAt: Date,
-    @Optional() customers: Customer[]
+    @Optional() customers: Customer[],
+    @Optional() user: User,
+    @Optional() insuranceCompanies: InsuranceCompany[] // Add insuranceCompanies parameter
   ) {
     this.id = id;
     this.first_name = first_name;
@@ -33,6 +39,8 @@ export class Agent {
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     this.customers = customers;
+    this.user = user;
+    this.insuranceCompanies = insuranceCompanies; // Assign insurance companies association
   }
 
   // Method to get the full name of the agent
