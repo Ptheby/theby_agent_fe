@@ -10,14 +10,15 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from '../auth/auth.component';
+import { routes } from '../../../app.routes';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
-  imports: [ReactiveFormsModule, CommonModule, HttpClientModule,AuthComponent,RouterLink],
-})
+  imports: [ReactiveFormsModule, CommonModule, HttpClientModule,AuthComponent,RouterLink
+  ]})
 export class SignUpComponent {
   isLoading = false;
   signupForm: FormGroup;

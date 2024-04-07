@@ -55,6 +55,13 @@ export const routes: Routes = [
       ).then((c) => c.CustomerDetailsComponent),
   },
   {
+    path: 'agent-assignment',
+    loadChildren: () => import('./agent/agent-assignment/agent-assignment.component').then(m => m.AgentAssignmentComponent)
+  },
+
+
+
+  {
     path: 'agents/:id',
     loadComponent: () =>
       import(

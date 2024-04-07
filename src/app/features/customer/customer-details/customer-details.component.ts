@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class CustomerDetailsComponent implements OnInit {
   selectedCustomer: Customer | undefined;
 
+
   constructor(
     private customerService: CustomerService,
     private route: ActivatedRoute,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AgentService } from '../agent.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-agent-assignment',
@@ -16,6 +16,10 @@ export class AgentAssignmentComponent {
   constructor(
     private agentService: AgentService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private routerLink: RouterLink
   ) {}
+
+
+
 }
