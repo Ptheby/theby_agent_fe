@@ -32,6 +32,18 @@
                       formControlName="email"
                       placeholder="Enter your email"
                     />
+                    <span
+                    *ngIf="
+                      !loginForm.get('email')?.valid &&
+                     loginForm.get('email')?.touched
+                    "
+                    class="help-block"
+                    >Enter your email</span
+                  >
+
+
+
+
                   </div>
                   <div class="input-box">
                     <i class="fas fa-lock"></i>
@@ -40,6 +52,16 @@
                       placeholder="Enter your password"
                       formControlName="password"
                     />
+                    <span
+                    *ngIf="
+                      !loginForm.get('password')?.valid &&
+                     loginForm.get('password')?.touched
+                    "
+                    class="help-block"
+                    >Enter your email</span
+                  >
+                  </div>
+
                   </div>
                   @if(loginError){
                   <div class="error-message">
@@ -48,9 +70,9 @@
                   }
 
                   <div class="text"><a href="#">Forgot password?</a></div>
-                  <div class="button input-box">
+                  @if(loginForm.valid){<div class="button input-box">
                     <input type="submit" value="Submit" />
-                  </div>
+                  </div>}
                 </div>
                 <div class="text sign-up-text">
                   Don't have an account?
@@ -61,7 +83,7 @@
                     >Signup now</label
                   >
                 </div>
-              </div>
+
             </form>
           </div>
           <!-- <div class="signup-form">

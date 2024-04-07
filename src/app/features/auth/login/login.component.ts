@@ -22,6 +22,7 @@ import { NgIf } from '@angular/common';
     RouterLink,
     ReactiveFormsModule,
     FormsModule,
+    CommonModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',

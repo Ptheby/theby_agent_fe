@@ -6,14 +6,17 @@
       <li>
         <a class="agentslist" href="#0">Agents</a>
         <ul>
-          <li *ngFor="let agent of agents"><a (click)="navigateToAgentDetails(agent.id)">{{agent.first_name}} {{agent.last_name}}</a></li>
-
+          <li *ngFor="let agent of agents">
+            <a (click)="navigateToAgentDetails(agent.id)"
+              >{{ agent.first_name }} {{ agent.last_name }}</a
+            >
+          </li>
         </ul>
       </li>
       <li>
         <a href="#0">Customers</a>
         <ul>
-          <li ><a routerLink="/add-customer">Add Customer</a></li>
+          <li><a routerLink="/add-customer">Add Customer</a></li>
           <li><a routerLink="/your-customers">Your Customers</a></li>
           <li><a routerLink="/available-customers">Available Customers</a></li>
           <li><a routerLink="/customers">All Customers</a></li>
@@ -22,20 +25,20 @@
       </li>
       <div class="auth">
         <hr />
-
-        @if(!isAuthenticated) {
+        @if(isLoggedIn()){
+          <li><a (click)="logout()">Logout</a></li>
+          <li routerLink="/account"><a>Account</a></li>
+          }
+        @else {
         <li><a routerLink="/login">Login</a></li>
-        } @if(!isAuthenticated){
+
         <li>
           <a [routerLink]="['/sign-up']" routerLinkActive="router-link-active"
             >Signup</a
           >
         </li>
-        } @if(isAuthenticated){
-        <li><a (click)="onLogout()">Logout</a></li>
-          }
-        <li routerLink="/account"><a>Account</a></li>
-
+        }
+       
       </div>
     </ul>
   </nav>

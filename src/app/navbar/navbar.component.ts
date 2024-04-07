@@ -17,12 +17,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   userEmail: any | null;
   userSub: Subscription = new Subscription();
-agents:Agent[]=[];
-private subscription: Subscription | undefined;
-
-
-
-
+  agents: Agent[] = [];
+  private subscription: Subscription | undefined;
 
   constructor(
     private router: Router,
@@ -31,8 +27,6 @@ private subscription: Subscription | undefined;
     private route: ActivatedRoute
   ) {}
 
-
-
   ngOnInit() {
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
@@ -40,45 +34,41 @@ private subscription: Subscription | undefined;
       console.log(!!user);
     });
 
-  this.subscription = this.agentService.getAllAgents().subscribe({
-    next: (data: Agent[]) => {
-      this.agents = data;
-      console.log(this.agents);
-    },
-    error: (error: any) => {
-      console.error('Error fetching agents:', error);
-    }
-  });
-  // this.getAllAgents();
-}
-ngOnDestroy(): void {
-  if (this.subscription) {
-    this.subscription.unsubscribe();
+    this.subscription = this.agentService.getAllAgents().subscribe({
+      next: (data: Agent[]) => {
+        this.agents = data;
+        console.log(this.agents);
+      },
+      error: (error: any) => {
+        console.error('Error fetching agents:', error);
+      },
+    });
+    // this.getAllAgents();
   }
-}
-getAllAgents(): void {
-  this.agentService.getAllAgents().subscribe({
-    next: (agents: Agent[]) => {
-      this.agents = agents;
-
-    },
-    error: (error: any) => {
-      console.error('Error fetching agents:', error);
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
-  });
+  }
+  getAllAgents(): void {
+    this.agentService.getAllAgents().subscribe({
+      next: (agents: Agent[]) => {
+        this.agents = agents;
+      },
+      error: (error: any) => {
+        console.error('Error fetching agents:', error);
+      },
+    });
+  }
+  navigateToAgentDetails(id: number) {
+    this.router.navigate(['/agents', id]);
+  }
 
-}
-navigateToAgentDetails(id: number) {
-  this.router.navigate(['/agents',id]);
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
 
-    }
-
-
-
-
-
-
-  onLogout() {
-    this.onLogout = this.authService.logout;
+  logout() {
+    this.logout = this.authService.logout;
   }
 }
