@@ -10,6 +10,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -25,6 +27,7 @@ import {
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  loginError=false;
   email = '';
   password = '';
   loginForm: FormGroup = new FormGroup({
@@ -47,21 +50,9 @@ export class LoginComponent {
   }
 
   login() {
-    // const userData = {
-    //   user: {
-    //     email: this.loginForm.get('user.email')?.value,
-    //     password: this.loginForm.get('user.password')?.value,
-
-    //   }};
-    console.log(
-      'this is our data passed to our login method',
-      this.loginForm.value
-    );
     if (this.loginForm.valid) {
       const email = this.loginForm.value.email;
-      console.log(email);
       const password = this.loginForm.value.password;
-      console.log(password);
 
       this.authService.login(email, password).subscribe({
         next: (res: any) => {
@@ -69,8 +60,9 @@ export class LoginComponent {
           this.authService.setToken(res.token);
           this.router.navigate(['/dashboard']);
         },
-        error: (error: any) => {
-          console.error('Login Error', error);
+        error: (loginError: any) => {
+          console.error('Login Error', loginError);
+          this.loginError = true; // Set the flag to true
         },
       });
     }

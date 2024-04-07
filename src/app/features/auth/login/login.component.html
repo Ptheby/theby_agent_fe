@@ -1,5 +1,8 @@
 <body>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
   <div class="body">
     <div class="container">
       <input type="checkbox" id="flip" />
@@ -38,6 +41,12 @@
                       formControlName="password"
                     />
                   </div>
+                  @if(loginError){
+                  <div class="error-message">
+                    Invalid email or password. Please try again.
+                  </div>
+                  }
+
                   <div class="text"><a href="#">Forgot password?</a></div>
                   <div class="button input-box">
                     <input type="submit" value="Submit" />

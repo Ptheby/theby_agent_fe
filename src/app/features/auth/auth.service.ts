@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { User } from '../../shared/models/user';
@@ -15,11 +15,16 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string) {
-    const apiUrl =environment.apiUrl;
-    return this.http.post<{ token: string }>(apiUrl+'/login', {
+    const apiUrl = environment.apiUrl;
+    return this.http.post<{ token: string }>(apiUrl + '/login', {
       email,
       password,
-    });
+    }).pipe(
+      catchError(error => {
+        // Handle HTTP errors or custom errors from the server
+        return throwError(error);
+      })
+    );
   }
 
   setToken(token: string) {
@@ -31,7 +36,8 @@ export class AuthService {
 	}
 
   isLoggedIn() {
-		return !!this.getToken();
+		return !!this.getToken()
+;
 	}
   logout() {
 		localStorage.removeItem('token');

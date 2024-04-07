@@ -49,12 +49,6 @@
                       class="help-block"
                       >Enter a first name</span
                     >
-                    <!-- <br
-                            *ngIf="
-                              !signupForm.get('agent.first_name')?.valid &&
-                              signupForm.get('agent.first_name')?.touched
-                            "
-                          /> -->
                   </div>
                   <div class="input-box">
                     <i class="fas fa-user"></i>
@@ -115,8 +109,8 @@
                     />
                     <span
                       *ngIf="
-                        !signupForm.get('agent.email')?.valid &&
-                        signupForm.get('agent.email')?.touched
+                        !signupForm.get('user.email')?.valid &&
+                        signupForm.get('user.email')?.touched
                       "
                       class="help-block"
                       >Enter your email</span
@@ -130,15 +124,24 @@
                         placeholder="Enter your password"
                         formControlName="password"
                       />
-                      <span
-                        *ngIf="
-                          !signupForm.get('agent.password')?.valid &&
-                          signupForm.get('agent.password')?.touched
-                        "
-                        class="help-block"
-                        >Enter a password</span
-                      >
+                      <div *ngIf="signupForm.get('user.password')?.touched" class="error-messages">
+                        <span
+                          *ngIf="signupForm.get('user.password')?.value === ''"
+                          class="help-block"
+                        >
+                          Enter a password
+                        </span>
+                        <span
+                          *ngIf="signupForm.get('user.password')?.value.length < 6 && signupForm.get('user.password')?.value !== ''"
+                          class="help-block"
+                        >
+                          Password must be at least 6 characters long
+                        </span>
+                      </div>
                     </div>
+                  </div>
+
+
                     <div class="input-box">
                       <i class="fas fa-lock"></i>
                       <input
@@ -146,15 +149,15 @@
                         placeholder="Re-enter your password"
                         formControlName="password_confirmation"
                       />
-                      <span
-                        *ngIf="
-                          !signupForm.get('agent.password_confirmation')
-                            ?.valid &&
-                          signupForm.get('agent.password_confirmation')?.touched
-                        "
-                        class="help-block"
-                        >Confirm your password</span
-                      >
+                      <span *ngIf="!signupForm.get('user.password_confirmation')?.valid && signupForm.get('user.password_confirmation')?.touched" class="help-block">
+                        Confirm your password
+                      </span>
+
+                      <span *ngIf="signupForm.get('user.password')?.value !== signupForm.get('user.password_confirmation')?.value && signupForm.get('user.password_confirmation')?.touched" class="help-block">
+                        Passwords must match!
+                      </span>
+
+
                     </div>
                   </div>
                 </div>
@@ -177,7 +180,7 @@
                     >Login now</label
                   >
                 </div>
-              </div>
+
             </form>
           </div>
         </div>
