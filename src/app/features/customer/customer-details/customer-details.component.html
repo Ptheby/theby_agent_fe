@@ -59,17 +59,22 @@
         <div class="col-md-4">
           <div class="profile-work">
             <p>Links</p>
-            <button (click)="toggleAssignAgent()">Assign Agent</button><br />
-            @if(showAssignAgent){
+            <button (click)="assignAgentToCustomer(customerId, agentId)">
+              Assign Agent</button
+            ><br />
+            <!-- @if(showAssignAgent){
             <app-agent-assignment></app-agent-assignment>
-            }
+            } -->
 
             <button href="CHANGE">Policy</button><br />
             <button>Notes</button><br />
             <br />
             <br />
 
-            <button class="confirm-delete" (click)="confirmDelete(selectedCustomer?.id)">
+            <button
+              class="confirm-delete"
+              (click)="confirmDelete(selectedCustomer?.id)"
+            >
               Delete Customer
             </button>
           </div>

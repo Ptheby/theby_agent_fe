@@ -98,6 +98,22 @@
                       >Enter your state</span
                     >
                   </div>
+                  <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input
+                      type="text"
+                      placeholder="Enter your phone #"
+                      formControlName="phone"
+                    />
+                    <span
+                      *ngIf="
+                        !signupForm.get('agent.phone')?.valid &&
+                        signupForm.get('agent.phone')?.touched
+                      "
+                      class="help-block"
+                      >Enter your phone</span
+                    >
+                  </div>
                 </div>
                 <div class="agent-info" formGroupName="user">
                   <div class="input-box">

@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 import { Subscription } from 'rxjs';
 import { ViewCustomersComponent } from './features/customer/view-customers/view-customers.component';
 import { CustomerDetailsComponent } from './features/customer/customer-details/customer-details.component';
+import { AgentsCustomersComponent } from './features/customer/agents-customers/agents-customers.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -16,7 +17,8 @@ import { CustomerDetailsComponent } from './features/customer/customer-details/c
     AuthComponent,
     NavbarComponent,
     ViewCustomersComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    AgentsCustomersComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

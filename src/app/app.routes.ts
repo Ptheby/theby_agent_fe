@@ -68,5 +68,13 @@ export const routes: Routes = [
         './agent/agent-details/agent-details.component'
       ).then((c) => c.AgentDetailsComponent),
   },
+  {
+    path: 'agents-customers',
+    loadComponent: () =>
+      import(
+        './features/customer/agents-customers/agents-customers.component'
+      ).then((c) => c.AgentsCustomersComponent),
+  },
+
   { path: '', pathMatch: 'full', redirectTo: '/login' },
 ];

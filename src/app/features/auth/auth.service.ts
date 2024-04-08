@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { User } from './user';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Agent } from '../../agent/agent';
 
 @Injectable({
   providedIn: 'root',
@@ -63,6 +64,17 @@ export class AuthService {
     console.log(this.user);
     return this.http.post(apiUrl + '/users/create_with_agent', user);
   }
+
+  getUserInfo(): Observable<User> {
+    const apiUrl = environment.apiUrl;
+
+    return this.http.get<User>(apiUrl+'/user/:id');
+  }
+
+
+
+
+
 
   private checkTokenExpiration() {
     const token = this.getToken();

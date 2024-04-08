@@ -31,6 +31,7 @@ export class SignUpComponent {
       last_name: '',
       npn: '',
       state: '',
+      phone:''
     },
   };
 name: any;
@@ -50,6 +51,7 @@ name: any;
         last_name: new FormControl('', Validators.required),
         npn: new FormControl('', Validators.required),
         state: new FormControl('', Validators.required),
+        phone: new FormControl('',Validators.required)
       }),
     });
   }
@@ -66,7 +68,8 @@ name: any;
         last_name: this.signupForm.get('agent.last_name')?.value,
         npn: this.signupForm.get('agent.npn')?.value,
         state: this.signupForm.get('agent.state')?.value,
-        city: this.signupForm.get('agent.city')?.value, // Assuming city is a valid field
+      phone: this.signupForm.get('agent.phone')?.value,
+        // Assuming city is a valid field
       },
     };
 
