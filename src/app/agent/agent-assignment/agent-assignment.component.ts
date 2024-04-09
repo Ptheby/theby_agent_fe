@@ -21,7 +21,7 @@ export class AgentAssignmentComponent {
     private routerLink: RouterLink
   ) {}
   assignAgentToCustomer(agentId: any, customerId: any): void {
-    this.agentService.assignAgent(agentId, customerId)
+    this.agentService.claimCustomer(agentId, customerId)
       .subscribe(
         response => {
           // Handle success response

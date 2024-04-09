@@ -42,7 +42,7 @@ export class AgentService {
       );
   }
 
-  assignAgent(agentId: any, customerId: any): Observable<any> {
+  claimCustomer(agentId: any, customerId: any): Observable<any> {
     const body = { agentId: agentId, customerId: customerId }; // Construct the request body
     return this.http.post<any>(`${this.apiUrl}/agents/${agentId}/assign_customer/${customerId}`, body);
   }

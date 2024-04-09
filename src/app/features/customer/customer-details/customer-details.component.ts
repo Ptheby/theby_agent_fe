@@ -76,8 +76,8 @@ export class CustomerDetailsComponent implements OnInit {
     }
   }
 
-  assignAgentToCustomer(agentId: any, customerId: any): void {
-    this.agentService.assignAgent(agentId, customerId).subscribe(
+  claimCustomer(agentId: any, customerId: any): void {
+    this.agentService.claimCustomer(agentId, customerId).subscribe(
       (response) => {
         // Handle success response
         console.log('Agent assigned successfully:', response);
