@@ -42,9 +42,9 @@ export class AgentService {
       );
   }
 
-  claimCustomer(agentId: any, customerId: any): Observable<any> {
-    const body = { agentId: agentId, customerId: customerId }; // Construct the request body
-    return this.http.post<any>(`${this.apiUrl}/agents/${agentId}/assign_customer/${customerId}`, body);
+  claimCustomer( customerId: any): Observable<any> {
+    const body = { customerId: customerId }; // Construct the request body
+    return this.http.post<any>(`${this.apiUrl}/assign_customer`, body);
   }
 
 }

@@ -20,6 +20,11 @@ import { routes } from '../../../app.routes';
   imports: [ReactiveFormsModule, CommonModule, HttpClientModule,AuthComponent,RouterLink
   ]})
 export class SignUpComponent {
+  states:string[]=[   'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+  'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+  'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+  'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+  'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
   isLoading = false;
   signupForm: FormGroup;
   user = {
@@ -49,7 +54,7 @@ name: any;
       agent: new FormGroup({
         first_name: new FormControl('', Validators.required),
         last_name: new FormControl('', Validators.required),
-        npn: new FormControl('', Validators.required),
+        npn: new FormControl('', [Validators.required,Validators.minLength(8),Validators.maxLength(8)]),
         state: new FormControl('', Validators.required),
         phone: new FormControl('',Validators.required)
       }),

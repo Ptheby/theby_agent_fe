@@ -8,7 +8,7 @@ export class Agent {
   id: number;
   first_name: string;
   last_name: string;
-  npn: number;
+  npn: string;
   state: string;
   userId: number;
   createdAt?: Date;
@@ -21,7 +21,7 @@ export class Agent {
     id: number,
     first_name: string,
     last_name: string,
-    npn: number,
+    npn: string,
     state: string,
     userId: number,
     @Optional() createdAt: Date,

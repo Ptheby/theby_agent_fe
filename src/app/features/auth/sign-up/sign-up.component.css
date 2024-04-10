@@ -10,6 +10,12 @@
 img{
   max-width: fit-content;
 }
+select{
+  border: none;
+  width: 100%;
+  font-weight: 500;
+
+}
 .body{
   min-height: 100vh;
   display: flex;
@@ -261,3 +267,49 @@ input{
     display: none;
   }
 }
+.input-box {
+  position: relative;
+  margin: 10px 0;
+}
+
+.input-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 0 30px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  appearance: none; /* Remove default dropdown arrow */
+  background: transparent; /* Set transparent background */
+  color: #7a7777;
+  cursor: pointer;
+}
+
+.input-box select:focus,
+.input-box select:valid {
+  border-color: #7d2ae8;
+}
+
+.input-box i {
+  position: absolute;
+  color: #7d2ae8;
+  font-size: 17px;
+}
+
+.input-box .help-block {
+  font-size: 14px;
+  font-weight: 500;
+  color: #da0707;
+}
+
+.input-box .help-block a {
+  text-decoration: none;
+}
+
+.input-box .help-block a:hover {
+  text-decoration: underline;
+}
+

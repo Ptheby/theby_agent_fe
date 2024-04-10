@@ -69,33 +69,49 @@
                   <div class="input-box">
                     <i class="fas fa-user"></i>
                     <input
-                      type="number"
+                      type="text"
                       placeholder="Enter your national producer #"
                       formControlName="npn"
                     />
                     <span
                       *ngIf="
-                        !signupForm.get('agent.npn')?.valid &&
-                        signupForm.get('agent.npn')?.touched
+                        !signupForm.get('agent.npn')?.value &&
+                        signupForm.get('agent.npn')?.touched &&
+                        signupForm.get('agent.npn')?.pristine
                       "
                       class="help-block"
                       >Enter NPN</span
                     >
+                    <span
+                      *ngIf="
+                        signupForm.get('agent.npn')?.value &&
+                        signupForm.get('agent.npn')?.value.length !== 8 &&
+                        signupForm.get('agent.npn')?.dirty &&
+                        signupForm.get('agent.npn')?.touched
+                      "
+                      class="help-block"
+                    >
+                      Must be 8 characters long
+                    </span>
                   </div>
                   <div class="input-box">
                     <i class="fas fa-user"></i>
-                    <input
-                      type="text"
-                      placeholder="Enter your state"
-                      formControlName="state"
-                    />
+                    <select formControlName="state">
+                      <option value="">Select your state</option>
+                      <option
+                        *ngFor="let abbreviation of states"
+                        [value]="abbreviation"
+                      >
+                        {{ abbreviation }}
+                      </option>
+                    </select>
                     <span
                       *ngIf="
                         !signupForm.get('agent.state')?.valid &&
                         signupForm.get('agent.state')?.touched
                       "
                       class="help-block"
-                      >Enter your state</span
+                      >select a state</span
                     >
                   </div>
                   <div class="input-box">
@@ -140,7 +156,10 @@
                         placeholder="Enter your password"
                         formControlName="password"
                       />
-                      <div *ngIf="signupForm.get('user.password')?.touched" class="error-messages">
+                      <div
+                        *ngIf="signupForm.get('user.password')?.touched"
+                        class="error-messages"
+                      >
                         <span
                           *ngIf="signupForm.get('user.password')?.value === ''"
                           class="help-block"
@@ -148,7 +167,10 @@
                           Enter a password
                         </span>
                         <span
-                          *ngIf="signupForm.get('user.password')?.value.length < 6 && signupForm.get('user.password')?.value !== ''"
+                          *ngIf="
+                            signupForm.get('user.password')?.value.length < 6 &&
+                            signupForm.get('user.password')?.value !== ''
+                          "
                           class="help-block"
                         >
                           Password must be at least 6 characters long
@@ -157,46 +179,55 @@
                     </div>
                   </div>
 
+                  <div class="input-box">
+                    <i class="fas fa-lock"></i>
+                    <input
+                      type="password"
+                      placeholder="Re-enter your password"
+                      formControlName="password_confirmation"
+                    />
+                    <span
+                      *ngIf="
+                        !signupForm.get('user.password_confirmation')?.valid &&
+                        signupForm.get('user.password_confirmation')?.touched
+                      "
+                      class="help-block"
+                    >
+                      Confirm your password
+                    </span>
 
-                    <div class="input-box">
-                      <i class="fas fa-lock"></i>
-                      <input
-                        type="password"
-                        placeholder="Re-enter your password"
-                        formControlName="password_confirmation"
-                      />
-                      <span *ngIf="!signupForm.get('user.password_confirmation')?.valid && signupForm.get('user.password_confirmation')?.touched" class="help-block">
-                        Confirm your password
-                      </span>
-
-                      <span *ngIf="signupForm.get('user.password')?.value !== signupForm.get('user.password_confirmation')?.value && signupForm.get('user.password_confirmation')?.touched" class="help-block">
-                        Passwords must match!
-                      </span>
-
-
-                    </div>
+                    <span
+                      *ngIf="
+                        signupForm.get('user.password')?.value !==
+                          signupForm.get('user.password_confirmation')?.value &&
+                        signupForm.get('user.password_confirmation')?.touched
+                      "
+                      class="help-block"
+                    >
+                      Passwords must match!
+                    </span>
                   </div>
                 </div>
-                @if (signupForm.valid) {
-                <div class="button input-box">
-                  <input
-                    [disabled]="!signupForm.valid"
-                    type="submit"
-                    value="Submit"
-                  />
-                </div>
-                }
+              </div>
+              @if (signupForm.valid) {
+              <div class="button input-box">
+                <input
+                  [disabled]="!signupForm.valid"
+                  type="submit"
+                  value="Submit"
+                />
+              </div>
+              }
 
-                <div class="text sign-up-text">
-                  Already have an account?
-                  <label
-                    for="flip"
-                    [routerLink]="['/login']"
-                    routerLinkActive="router-link-active"
-                    >Login now</label
-                  >
-                </div>
-
+              <div class="text sign-up-text">
+                Already have an account?
+                <label
+                  for="flip"
+                  [routerLink]="['/login']"
+                  routerLinkActive="router-link-active"
+                  >Login now</label
+                >
+              </div>
             </form>
           </div>
         </div>
