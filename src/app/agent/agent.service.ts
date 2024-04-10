@@ -42,8 +42,8 @@ export class AgentService {
       );
   }
 
-  claimCustomer( customerId: any): Observable<any> {
-    const body = { customerId: customerId }; // Construct the request body
+  claimCustomer(customerId: number): Observable<any> {
+    const body = { customer_id: customerId }; // Use customer_id instead of customerId
     return this.http.post<any>(`${this.apiUrl}/assign_customer`, body);
   }
 

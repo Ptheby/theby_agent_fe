@@ -8,12 +8,12 @@ import { AgentService } from '../../../agent/agent.service';
   selector: 'app-customer-details',
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.css'],
-  standalone:true
+  standalone: true
 })
 export class CustomerDetailsComponent implements OnInit {
   selectedCustomer: Customer | undefined;
-  customerId:any;
-  agentId:any;
+  customerId: any;
+  agentId: any;
   showAssignAgent: boolean = false;
   customers: Customer[] = [];
 
@@ -34,7 +34,6 @@ export class CustomerDetailsComponent implements OnInit {
         // Set the customer details
 
         // Now that you have the customer ID, you can call the method to assign the agent
-
       });
     });
   }
@@ -76,14 +75,17 @@ export class CustomerDetailsComponent implements OnInit {
     }
   }
 
-  claimCustomer( customerId: any): void {
-    this.agentService.claimCustomer( customerId).subscribe(
+  claimCustomer(): void {
+    if (!this.selectedCustomer) {
+      console.error('No customer selected.');
+      return;
+    }
+
+    this.agentService.claimCustomer(this.selectedCustomer.id).subscribe(
       (response) => {
-        // Handle success response
         console.log('Agent assigned successfully:', response);
       },
       (error) => {
-        // Handle error
         console.error('Error assigning agent:', error);
       }
     );
