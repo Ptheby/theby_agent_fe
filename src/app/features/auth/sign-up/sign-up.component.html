@@ -96,7 +96,7 @@
                   </div>
                   <div class="input-box">
                     <i class="fas fa-user"></i>
-                    <select formControlName="state" class="state-select" >
+                    <select formControlName="state" class="state-select">
                       <option value="">Select your state</option>
                       <option
                         *ngFor="let abbreviation of states"
@@ -209,6 +209,14 @@
                   </div>
                 </div>
               </div>
+              <div *ngIf="userValidationErrors" class="error-message">
+                {{ userValidationErrors }}
+              </div>
+
+              <!-- Display agent validation errors -->
+              <div *ngIf="agentValidationErrors" class="error-message">
+                {{ agentValidationErrors }}
+              </div>
               @if (signupForm.valid) {
               <div class="button input-box">
                 <input
@@ -228,6 +236,7 @@
                   >Login now</label
                 >
               </div>
+              
             </form>
           </div>
         </div>

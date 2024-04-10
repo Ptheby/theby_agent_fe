@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { ViewCustomersComponent } from './features/customer/view-customers/view-customers.component';
 import { CustomerDetailsComponent } from './features/customer/customer-details/customer-details.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,6 +19,8 @@ import { CustomerDetailsComponent } from './features/customer/customer-details/c
     NavbarComponent,
     ViewCustomersComponent,
     CustomerDetailsComponent,
+
+
 
   ],
   templateUrl: './app.component.html',

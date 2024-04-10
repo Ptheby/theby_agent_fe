@@ -20,6 +20,10 @@ import { routes } from '../../../app.routes';
   imports: [ReactiveFormsModule, CommonModule, HttpClientModule,AuthComponent,RouterLink
   ]})
 export class SignUpComponent {
+  userValidationErrors: string[] = [];
+agentValidationErrors: string[] = [];
+  emailExistsError: boolean = false;
+
   states:string[]=[   'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
   'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
   'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
@@ -73,8 +77,7 @@ name: any;
         last_name: this.signupForm.get('agent.last_name')?.value,
         npn: this.signupForm.get('agent.npn')?.value,
         state: this.signupForm.get('agent.state')?.value,
-      phone: this.signupForm.get('agent.phone')?.value,
-        // Assuming city is a valid field
+        phone: this.signupForm.get('agent.phone')?.value,
       },
     };
 
@@ -87,7 +90,18 @@ name: any;
         },
         error: (error: any) => {
           console.error('Sign up failed', error);
-          // Handle error (e.g., show error message)
+          if (error.status === 422) {
+            if (error.error && error.error.user_errors) {
+              this.userValidationErrors = Object.values(error.error.user_errors);
+            }
+            if (error.error && error.error.agent_errors) {
+              this.agentValidationErrors = Object.values(error.error.agent_errors);
+            }
+          } else {
+            console.error('An unexpected error occurred');
+            // Handle other errors (e.g., show a generic error message)
+            // You can set a generic error message here if needed
+          }
         },
       });
     } else {
