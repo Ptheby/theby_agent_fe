@@ -1,0 +1,138 @@
+<body>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <div class="body">
+    <div class="container">
+      <input type="checkbox" id="flip" />
+      <div class="cover">
+        <div class="front">
+          <img src="\assets\photos\Signup.jpg" alt="Signup Art" />
+          <div class="text">
+            <span class="text-1">Enter Policy Info<br />More</span>
+            <span class="text-2">Join us</span>
+          </div>
+        </div>
+        <div class="back">
+          <img class="backImg" src="images/backImg.jpg" alt="" />
+          <div class="text">
+            <span class="text-1"
+              >Complete miles of journey<br />with one step</span
+            >
+            <span class="text-2">Let's get started</span>
+          </div>
+        </div>
+      </div>
+      <div class="forms">
+        <div class="form-content">
+          <div class="signup-form">
+            <div class="title">Add Policy</div>
+
+            <form [formGroup]="policyForm" (ngSubmit)="onAddPolicy()">
+              <div class="input-boxes">
+                <div class="policy-info" formGroupName="policy">
+                  <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <select formControlName="policy_type" class="type-select">
+                      <option value="">Primary Policy Type</option>
+                      <option>Auto</option>
+                      <option>Home</option>
+                      <option>Life</option>
+                      <option>Other</option>
+                    </select>
+                    <span
+                      *ngIf="
+                        !policyForm.get('policy.policy_type')?.valid &&
+                        policyForm.get('policy.policy_type')?.touched
+                      "
+                      class="help-block"
+                      >Select a type</span
+                    >
+                  </div>
+                  <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input
+                      type="text"
+                      placeholder="Enter Expiration Date"
+                      formControlName="expDate"
+                    />
+                    <span
+                      *ngIf="
+                        !policyForm.get('policy.expDate')?.valid &&
+                        policyForm.get('policy.expDate')?.touched
+                      "
+                      class="help-block"
+                      >Enter an Expiration Date</span
+                    >
+                  </div>
+                  <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input
+                      type="text"
+                      placeholder="Term length in months"
+                      formControlName="termLength"
+                    />
+                    <span
+                      *ngIf="
+                        !policyForm.get('policy.termLength')?.value &&
+                        policyForm.get('policy.termLength')?.touched &&
+                        policyForm.get('policy.termLength')?.pristine
+                      "
+                      class="help-block"
+                      >Enter Term Length</span
+                    >
+
+                  </div>
+
+                  <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input
+                      type="text"
+                      placeholder="Enter Premium Amount"
+                      formControlName="premiumAmount"
+                    />
+                    <span
+                      *ngIf="
+                        !policyForm.get('policy.premiumAmount')?.valid &&
+                        policyForm.get('policy.premiumAmount')?.touched
+                      "
+                      class="help-block"
+                      >Enter Premium Amount</span
+                    >
+                  </div>
+                  <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input
+                      type="text"
+                      placeholder="Insurance Company ID"
+                      formControlName="insurance_company_id"
+                    />
+                    <span
+                      *ngIf="
+                        !policyForm.get('policy.insurance_company_id')?.valid &&
+                        policyForm.get('policy.insurance_company_id')?.touched
+                      "
+                      class="help-block"
+                      >Enter Company ID</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              @if (policyForm.valid) {
+              <div class="button input-box">
+                <input
+                  [disabled]="!policyForm.valid"
+                  type="submit"
+                  value="Submit"
+                />
+              </div>
+              }
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

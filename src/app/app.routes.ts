@@ -52,12 +52,20 @@ export const routes: Routes = [
     loadComponent: () =>
       import(
         './features/customer/customer-details/customer-details.component'
-      ).then((c) => c.CustomerDetailsComponent),
+      ).then((c) => c.CustomerDetailsComponent)
   },
   {
     path: 'agent-assignment',
     loadComponent: () => import('./agent/agent-assignment/agent-assignment.component').then(m => m.AgentAssignmentComponent)
   },
+  {
+    path: 'customers/:id/create-policy',
+    loadComponent: () =>
+      import(
+        './features/policy/create-policy/create-policy.component'
+      ).then((c) => c.CreatePolicyComponent)
+  },
+
 
 
 

@@ -9,6 +9,10 @@
   font-family: "poppins", sans-serif;
 
 }
+/* .body{background: -webkit-linear-gradient(left, #4c3bec, #fdfdfd);} */
+
+
+
 .input-container {
   display: flex;
   flex-direction: column;

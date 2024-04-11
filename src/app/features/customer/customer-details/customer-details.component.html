@@ -8,7 +8,7 @@
 <!------ Include the above in your HEAD tag ---------->
 <div class="body">
   <div class="container emp-profile">
-    <form method="post">
+
       <div class="row">
         <div class="col-md-4">
           <div class="policy-img">
@@ -65,8 +65,9 @@
             <!-- @if(showAssignAgent){
             <app-agent-assignment></app-agent-assignment>
             } -->
-
-            <button href="CHANGE">Policy</button><br />
+<a routerLink='create-policy'>
+            <button >Add Policy</button></a><br />
+            <button href="CHANGE">View Policy</button><br />
             <button>Notes</button><br />
             <br />
             <br />
@@ -213,6 +214,6 @@
           </div>
         </div>
       </div>
-    </form>
+
   </div>
 </div>

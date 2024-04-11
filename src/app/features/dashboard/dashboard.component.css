@@ -6,6 +6,6 @@ p {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-.body{
-  background-color:#4c3bec ;
+.body {
+  background: -webkit-linear-gradient(left, #4c3bec, #fdfdfd);
 }

@@ -1,12 +1,14 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AuthComponent } from './features/auth/auth/auth.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { environment } from '../environments/environment';
 import { Subscription } from 'rxjs';
 import { ViewCustomersComponent } from './features/customer/view-customers/view-customers.component';
 import { CustomerDetailsComponent } from './features/customer/customer-details/customer-details.component';
+import { CreatePolicyComponent } from './features/policy/create-policy/create-policy.component';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -19,6 +21,7 @@ import { CustomerDetailsComponent } from './features/customer/customer-details/c
     NavbarComponent,
     ViewCustomersComponent,
     CustomerDetailsComponent,
+    CreatePolicyComponent
 
 
 

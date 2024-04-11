@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -7,27 +8,29 @@
 img {
   max-width: fit-content;
 }
+select {
+  border: none;
+  width: 100%;
+  font-weight: 500;
+}
 .body {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-
-    background: -webkit-linear-gradient(left, #4c3bec, #fdfdfd);
-
+  background: -webkit-linear-gradient(left, #4c3bec, #fdfdfd);
   padding: 130px;
 }
 .container {
-  z-index: 0;
-  border-radius: 10px;
+  border-radius: 15px;
   position: relative;
-  max-width: 1050px;
+  max-width: 850px;
   width: 100%;
   background: #fff;
   padding: 20px 50px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   perspective: 2700px;
-  opacity: 100%;
+  opacity: 90%;
   padding: 65px;
 }
 input {
@@ -43,13 +46,13 @@ input {
   transition: all 1s ease;
   transform-origin: left;
   transform-style: preserve-3d;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 .container #flip:checked ~ .cover {
   transform: rotateY(-180deg);
-  /* border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;*/
+  /* border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;*/
 }
 .container .cover .front,
 .container .cover .back {
@@ -58,14 +61,14 @@ input {
   left: 0;
   height: 100%;
   width: 100%;
-  /* border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px; */
+  /* border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px; */
 }
 .cover .back {
   transform: rotateY(180deg);
   backface-visibility: hidden;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 .container .cover::before,
 .container .cover::after {
@@ -76,16 +79,16 @@ input {
   background: #ab7fe4;
   opacity: 0.5;
   z-index: 12;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .container .cover::after {
   opacity: 0.3;
   transform: rotateY(180deg);
   backface-visibility: hidden;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 .container .cover img {
   position: absolute;
@@ -93,8 +96,8 @@ input {
   width: 100%;
   object-fit: cover;
   z-index: 10;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 .container .cover .text {
   position: absolute;
@@ -105,14 +108,14 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 .cover .text .text-1,
 .cover .text .text-2 {
-  font-size: 32px;
-  font-weight: 400;
-  color: #ffffff;
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
   text-align: center;
 }
 .cover .text .text-2 {
@@ -242,3 +245,53 @@ input {
     display: none;
   }
 }
+.input-box {
+  position: relative;
+  margin: 10px 0;
+}
+
+.input-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 0 30px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  appearance: none; /* Remove default dropdown arrow */
+  background: transparent; /* Set transparent background */
+  color: #7a7777;
+  cursor: pointer;
+}
+
+.input-box select:focus,
+.input-box select:valid {
+  border-color: #7d2ae8;
+}
+
+.input-box i {
+  position: absolute;
+  color: #7d2ae8;
+  font-size: 17px;
+}
+
+.input-box .help-block {
+  font-size: 14px;
+  font-weight: 500;
+  color: #da0707;
+}
+
+.input-box .help-block a {
+  text-decoration: none;
+}
+
+.input-box .help-block a:hover {
+  text-decoration: underline;
+}
+
+.select-container {
+  position: relative;
+}
+

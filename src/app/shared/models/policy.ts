@@ -1,33 +1,14 @@
 export class Policy {
-  type: string;
-  expDate: Date;
-  termLength: number;
-  customerId: number;
-  agentId: number;
-  insuranceCompanyId: number;
-  createdAt: Date;
-  updatedAt: Date;
-  premiumAmount: number;
+
 
   constructor(
-    type: string,
-    expDate: Date,
-    termLength: number,
-    customerId: number,
-    agentId: number,
-    insuranceCompanyId: number,
-    createdAt: Date,
-    updatedAt: Date,
-    premiumAmount: number
-  ) {
-    this.type = type;
-    this.expDate = expDate;
-    this.termLength = termLength;
-    this.customerId = customerId;
-    this.agentId = agentId;
-    this.insuranceCompanyId = insuranceCompanyId;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
-    this.premiumAmount = premiumAmount;
-  }
-}
+  public  policy_type: string,
+  public  exp_date: Date,
+  public   term_legnth: string,
+  public  customerId: number,
+  public   agentId: number,
+  public   insurance_company_id: number,
+  public   createdAt: Date,
+  public   updatedAt: Date,
+  public  premium_amount: number
+  ){} }

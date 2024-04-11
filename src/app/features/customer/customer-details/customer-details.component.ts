@@ -3,9 +3,11 @@ import { CustomerService } from '../customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '../customer.model';
 import { AgentService } from '../../../agent/agent.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-customer-details',
+  imports:[RouterModule],
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.css'],
   standalone: true
