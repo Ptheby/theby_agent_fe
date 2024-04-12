@@ -13,10 +13,11 @@ export class PolicyService {
 
   constructor(private http: HttpClient) { }
 
-  addPolicy(policyData: any): Observable<any> {
+  addPolicy(customerId:any): Observable<any> {
+    const policyData = {customer_id:customerId}
     return this.http.post<any>(
       `${this.apiUrl}/policies`,
-      policyData
+     policyData
     );
   }
   updatePolicy(policyId: any, policyData: any): Observable<Policy> {
