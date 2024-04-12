@@ -14,7 +14,7 @@ export class PolicyService {
   constructor(private http: HttpClient) { }
 
   addPolicy(customerId:any): Observable<any> {
-    const policyData = {customer_id:customerId}
+    const policyData = {customer_id:customerId};
     return this.http.post<any>(
       `${this.apiUrl}/policies`,
      policyData

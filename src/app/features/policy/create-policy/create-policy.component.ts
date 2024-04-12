@@ -53,9 +53,9 @@ name: any;
 
       this.policyService.addPolicy(policyData).subscribe({
         next: (res: any) => {
-          console.log('Sign up successful', res);
+          console.log('Policy Successful', res);
           // Redirect to login or another page
-          this.router.navigate(['/policy/:id']);
+          this.router.navigate(['policy/:id']);
 
 
 
