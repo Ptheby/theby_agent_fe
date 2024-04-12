@@ -8,7 +8,9 @@ import { Subscription } from 'rxjs';
 import { ViewCustomersComponent } from './features/customer/view-customers/view-customers.component';
 import { CustomerDetailsComponent } from './features/customer/customer-details/customer-details.component';
 import { CreatePolicyComponent } from './features/policy/create-policy/create-policy.component';
-import { RouterModule } from '@angular/router';
+import { MatDatepickerModule, MatDateRangeInput, MatDateRangePicker, MatDateSelectionModel } from '@angular/material/datepicker';
+import { MatFormField } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @Component({
@@ -21,7 +23,13 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     ViewCustomersComponent,
     CustomerDetailsComponent,
-    CreatePolicyComponent
+    CreatePolicyComponent,
+    MatDatepickerModule,
+    MatDateRangeInput,
+    MatDateRangePicker,
+    MatFormField,
+    MatNativeDateModule
+
 
 
 

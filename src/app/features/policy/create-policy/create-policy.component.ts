@@ -2,14 +2,17 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 import { PolicyService } from '../policy.service';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MatDatepicker, MatDatepickerInput, MatDatepickerModule, MatDateRangeInput } from '@angular/material/datepicker';
+import { MatFormField } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-create-policy',
   standalone: true,
-  imports: [CommonModule,NgIf,ReactiveFormsModule],
+  imports: [CommonModule,NgIf,ReactiveFormsModule,MatDateRangeInput,MatDatepicker,MatFormField,MatDatepickerInput,MatDatepickerModule,MatNativeDateModule],
   templateUrl: './create-policy.component.html',
   styleUrl: './create-policy.component.css'
 })
@@ -25,7 +28,7 @@ export class CreatePolicyComponent {
    };
 name: any;
 
-  constructor(private router: Router, private policyService: PolicyService) {
+  constructor(private formbuilder:FormBuilder, private router: Router, private policyService: PolicyService) {
     this.policyForm = new FormGroup({
 
      policy: new FormGroup({
