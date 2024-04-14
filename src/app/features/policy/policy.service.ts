@@ -15,10 +15,12 @@ export class PolicyService {
 
   addPolicy(customerId:any): Observable<any> {
     const policyData = {customer_id:customerId};
+    console.log('Policy Data:', policyData);
     return this.http.post<any>(
       `${this.apiUrl}/policies`,
      policyData
     );
+
   }
   updatePolicy(policyId: any, policyData: any): Observable<Policy> {
     return this.http.put<Policy>(

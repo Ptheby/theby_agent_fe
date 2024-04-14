@@ -93,4 +93,7 @@ export class CustomerDetailsComponent implements OnInit {
       }
     );
   }
+  openAddPolicy(){
+    this.router.navigate(['create-policy'])
+  }
 }

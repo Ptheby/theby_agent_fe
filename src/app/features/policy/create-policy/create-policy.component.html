@@ -51,7 +51,7 @@
                   <div class="input-box">
                     <i class="fas fa-user"></i>
                     <input
-                      type="text"
+                      type="date"
                       placeholder="Enter Expiration Date"
                       formControlName="exp_date"
                     />
@@ -66,11 +66,12 @@
                   </div>
                   <div class="input-box">
                     <i class="fas fa-user"></i>
-                    <input
-                      type="text"
-                      placeholder="Term length in months"
-                      formControlName="term_length"
-                    />
+                    <select formControlName="term_length">
+                      <option value="">Select Term Length</option>
+                      <option value="6">6 months</option>
+                      <option value="12">12 months</option>
+                    </select>
+
                     <span
                       *ngIf="
                         policyForm.get('term_length')?.errors&&
@@ -84,9 +85,10 @@
                   <div class="input-box">
                     <i class="fas fa-user"></i>
                     <input
-                      type="text"
-                      placeholder="Enter Premium Amount"
-                      formControlName="premium_amount"
+                    type="text"
+                    placeholder="Enter Premium Amount"
+                    formControlName="premium_amount"
+                    (input)="formatCurrency($event)"
                     />
                     <span
                       *ngIf="
@@ -96,6 +98,7 @@
                       class="help-block"
                       >Enter Premium Amount</span
                     >
+                    <span>{{ premiumAmount | currency:'USD':'symbol':'1.2-2' }}</span>
                   </div>
                   <div class="input-box">
                     <i class="fas fa-user"></i>
