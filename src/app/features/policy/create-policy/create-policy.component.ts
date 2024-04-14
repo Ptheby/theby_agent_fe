@@ -1,65 +1,66 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../../auth/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PolicyService } from '../policy.service';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule, NgIf } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { MatDatepicker, MatDatepickerInput, MatDatepickerModule, MatDateRangeInput } from '@angular/material/datepicker';
-import { MatFormField } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CustomerService } from '../../customer/customer.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-policy',
   standalone: true,
-  imports: [CommonModule,NgIf,ReactiveFormsModule,MatDateRangeInput,MatDatepicker,MatFormField,MatDatepickerInput,MatDatepickerModule,MatNativeDateModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './create-policy.component.html',
-  styleUrl: './create-policy.component.css'
+  styleUrls: ['./create-policy.component.css'],
 })
 export class CreatePolicyComponent {
-
-
   policyForm: FormGroup;
-  policy = {
-    policy_type: '',
-    expDate: '',
-    termLength: '',
-    premiumAmount:''
-   };
-name: any;
 
-  constructor(private formbuilder:FormBuilder, private router: Router, private policyService: PolicyService) {
+  constructor(
+    private formbuilder: FormBuilder,
+    private router: Router,
+    private policyService: PolicyService,
+    private customerService: CustomerService,
+    private route: ActivatedRoute
+  ) {
     this.policyForm = new FormGroup({
+      policy_type: new FormControl('', Validators.required),
+      exp_date: new FormControl('', Validators.required),
+      term_length: new FormControl('', Validators.required),
+      premium_amount: new FormControl('', Validators.required),
+      insurance_company_id: new FormControl('', Validators.required),
+     
+    });
 
-     policy: new FormGroup({
-        policy_type: new FormControl('', Validators.required),
-        expDate: new FormControl('', Validators.required),
-        termLength: new FormControl('', Validators.required),
-        premiumAmount: new FormControl('', Validators.required),
-        insurance_company_id: new FormControl('', Validators.required),
+    // Get customer_id from route parameters
+    const customerId = this.route.snapshot.params['customer_id'];
 
-      }),
+    // Set the customer_id value in the form group
+    this.policyForm.patchValue({
+      customer_id: customerId
     });
   }
+
   onAddPolicy() {
     const policyData = {
-      policy: {
-        policy_type: this.policyForm.get('policy.policy_type')?.value,
-        exp_date: this.policyForm.get('policy.expDate')?.value,
-       term_length: this.policyForm.get('policy.termLength')?.value,
-       premium_amount: this.policyForm.get('policy.premiumAmount')?.value,
-       insurance_company_id: this.policyForm.get('policy.insurance_company_id')?.value
+      policy_type: this.policyForm.get('policy_type')?.value,
+      exp_date: this.policyForm.get('exp_date')?.value,
+      term_length: this.policyForm.get('term_length')?.value,
+      premium_amount: this.policyForm.get('premium_amount')?.value,
+      insurance_company_id: this.policyForm.get('insurance_company_id')?.value,
+      customer_id: this.policyForm.get('customer_id')?.value
+    };
 
-
-    }};
-
-
-      this.policyService.addPolicy(policyData).subscribe({
-        next: (res: any) => {
-          console.log('Policy Successful', res);
-          // Redirect to login or another page
-          this.router.navigate(['policy/:id']);
-
-
-
-        }})}}
+    this.policyService.addPolicy(policyData).subscribe({
+      next: (res: any) => {
+        console.log('Policy Successful', res);
+        const policyId = res.policy.id;
+        this.router.navigate(['policy', policyId]);
+      },
+      error: (error: any) => {
+        console.error('Error adding policy:', error);
+        // Handle error here
+      }
+    });
+  }
+}

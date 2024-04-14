@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
 
-
 export const routes: Routes = [
-   { path: '', pathMatch: 'full', redirectTo: '/login' },
+  { path: '', pathMatch: 'full', redirectTo: '/login' },
   {
     path: 'sign-up',
     loadComponent: () =>
@@ -30,7 +29,7 @@ export const routes: Routes = [
       import('./features/customer/customer.component').then(
         (c) => c.CustomerComponent
       ),
-      // canActivate:[AuthGuard],
+    // canActivate:[AuthGuard],
   },
   {
     path: 'dashboard',
@@ -52,31 +51,37 @@ export const routes: Routes = [
     loadComponent: () =>
       import(
         './features/customer/customer-details/customer-details.component'
-      ).then((c) => c.CustomerDetailsComponent)
+      ).then((c) => c.CustomerDetailsComponent),
   },
   {
     path: 'agent-assignment',
-    loadComponent: () => import('./agent/agent-assignment/agent-assignment.component').then(m => m.AgentAssignmentComponent)
+    loadComponent: () =>
+      import('./agent/agent-assignment/agent-assignment.component').then(
+        (m) => m.AgentAssignmentComponent
+      ),
   },
   {
     path: 'customers/:id/create-policy',
     loadComponent: () =>
-      import(
-        './features/policy/create-policy/create-policy.component'
-      ).then((c) => c.CreatePolicyComponent)
+      import('./features/policy/create-policy/create-policy.component').then(
+        (c) => c.CreatePolicyComponent
+      ),
   },
-
-
-
+  {
+    path: 'customers/:id/policy/:id',
+    loadComponent: () =>
+      import('./features/policy/policy-details/policy-details.component').then(
+        (c) => c.PolicyDetailsComponent
+      ),
+  },
 
   {
     path: 'agents/:id',
     loadComponent: () =>
-      import(
-        './agent/agent-details/agent-details.component'
-      ).then((c) => c.AgentDetailsComponent),
+      import('./agent/agent-details/agent-details.component').then(
+        (c) => c.AgentDetailsComponent
+      ),
   },
-
 
   { path: '', pathMatch: 'full', redirectTo: '/login' },
 ];

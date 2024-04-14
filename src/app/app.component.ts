@@ -23,12 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     NavbarComponent,
     ViewCustomersComponent,
     CustomerDetailsComponent,
-    CreatePolicyComponent,
-    MatDatepickerModule,
-    MatDateRangeInput,
-    MatDateRangePicker,
-    MatFormField,
-    MatNativeDateModule
+  
 
 
 
