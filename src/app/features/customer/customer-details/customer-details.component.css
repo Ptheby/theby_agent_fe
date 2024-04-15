@@ -1,6 +1,9 @@
 .body {
   background: -webkit-linear-gradient(left, #4c3bec, #fdfdfd);
 }
+.purple-close-button {
+  color: purple;
+}
 
 button {
   margin-bottom: 4px;

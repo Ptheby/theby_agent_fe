@@ -7,10 +7,8 @@ import { environment } from '../environments/environment';
 import { Subscription } from 'rxjs';
 import { ViewCustomersComponent } from './features/customer/view-customers/view-customers.component';
 import { CustomerDetailsComponent } from './features/customer/customer-details/customer-details.component';
-import { CreatePolicyComponent } from './features/policy/create-policy/create-policy.component';
-import { MatDatepickerModule, MatDateRangeInput, MatDateRangePicker, MatDateSelectionModel } from '@angular/material/datepicker';
-import { MatFormField } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 @Component({
@@ -23,7 +21,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     NavbarComponent,
     ViewCustomersComponent,
     CustomerDetailsComponent,
-  
+    MatSnackBarModule
+
 
 
 

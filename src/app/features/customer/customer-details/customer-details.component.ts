@@ -4,10 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from '../customer.model';
 import { AgentService } from '../../../agent/agent.service';
 import { RouterModule } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-customer-details',
-  imports:[RouterModule],
+  imports:[RouterModule
+  ],
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.css'],
   standalone: true
@@ -19,11 +21,15 @@ export class CustomerDetailsComponent implements OnInit {
   showAssignAgent: boolean = false;
   customers: Customer[] = [];
 
+
   constructor(
     private customerService: CustomerService,
     private route: ActivatedRoute,
     private router: Router,
-    private agentService: AgentService
+    private agentService: AgentService,
+    private _snackBar: MatSnackBar
+
+
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +45,10 @@ export class CustomerDetailsComponent implements OnInit {
       });
     });
   }
+
+
+
+
 
   toggleAssignAgent(): void {
     this.showAssignAgent = !this.showAssignAgent;
@@ -83,16 +93,32 @@ export class CustomerDetailsComponent implements OnInit {
       return;
     }
 
+    // Ask for confirmation
+    const confirmMessage = 'Are you sure you want to claim this customer?';
+    if (!window.confirm(confirmMessage)) {
+      // User clicked cancel, do nothing
+      return;
+    }
+
+    // User clicked OK, proceed with claiming the customer
     this.agentService.claimCustomer(this.selectedCustomer.id).subscribe(
       (response) => {
-        this.selectedCustomer= response
+        this.selectedCustomer = response;
         console.log('Agent assigned successfully:', response);
+        this._snackBar.open(`You have claimed ${this.selectedCustomer?.first_name}!`, 'Close', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+       // Add the custom class here
+        });
       },
       (error) => {
         console.error('Error assigning agent:', error);
       }
     );
   }
+
+
   openAddPolicy(): void {
     if (this.customerId) {
       console.log(this.customerId);

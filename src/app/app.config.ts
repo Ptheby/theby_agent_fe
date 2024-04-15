@@ -6,6 +6,7 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authTokenInterceptor } from './auth-token.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),provideHttpClient(withInterceptors([authTokenInterceptor])), provideAnimationsAsync('noop'),

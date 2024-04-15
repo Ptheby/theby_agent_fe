@@ -11,6 +11,7 @@ import { CustomerService } from '../../customer/customer.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Customer } from '../../customer/customer.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-policy',
@@ -41,7 +42,8 @@ export class CreatePolicyComponent implements OnInit {
     private router: Router,
     private policyService: PolicyService,
     private customerService: CustomerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _snackBar: MatSnackBar
   ) {
     this.policyForm = new FormGroup({
       policy_type: new FormControl('', Validators.required),
@@ -99,6 +101,13 @@ export class CreatePolicyComponent implements OnInit {
     this.policyService.addPolicy(policyData,customerId).subscribe({
       next: (res: any) => {
         console.log('Policy Successful', res);
+        this._snackBar.open(`You have created a/an ${this.policyForm.get('policy_type')?.value} policy for ${this.selectedCustomer?.first_name}!`, 'Close', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+       // Add the custom class here
+        });
+
         const policyId = res.policy.id;
         this.router.navigate([`customers/${customerId}/policy/${policyId}`]);
       },
