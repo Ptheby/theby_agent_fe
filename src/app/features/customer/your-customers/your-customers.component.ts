@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { CustomerService } from '../customer.service';
 import { Subscription } from 'rxjs';
 import { Customer } from '../customer.model';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-your-customers',
   standalone: true,
-  imports: [],
+  imports: [RouterModule,NgIf],
   templateUrl: './your-customers.component.html',
   styleUrl: './your-customers.component.css'
 })
@@ -48,7 +49,7 @@ export class YourCustomersComponent {
   }
 
 
-      
+
       navigateToCustomerDetails(id: number) {
         this.router.navigate(['/customers',id]);
         console.log(this.customers.values)

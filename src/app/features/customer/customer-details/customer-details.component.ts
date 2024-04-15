@@ -6,10 +6,11 @@ import { AgentService } from '../../../agent/agent.service';
 import { RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Agent } from '../../../agent/agent';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-customer-details',
-  imports:[RouterModule
+  imports:[RouterModule,NgIf
   ],
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.css'],
