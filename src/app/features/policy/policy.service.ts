@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Policy } from '../../shared/models/policy';
+import { Customer } from '../customer/customer.model';
 
 
 @Injectable({
@@ -13,13 +14,14 @@ export class PolicyService {
 
   constructor(private http: HttpClient) { }
 
-  addPolicy(customerId:any): Observable<any> {
-    const policyData = {customer_id:customerId};
-    console.log('Policy Data:', policyData);
-    return this.http.post<any>(
-      `${this.apiUrl}/policies`,
-     policyData
+  addPolicy(policyData: any,id: any): Observable<Customer> {
+    console.log('Policy Data:', policyData); // Log the policy data
+    return this.http.post<Customer>(
+      `${this.apiUrl}/customers/${id}/policies`,
+      policyData
     );
+
+
 
   }
   updatePolicy(policyId: any, policyData: any): Observable<Policy> {

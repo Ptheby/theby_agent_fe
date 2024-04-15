@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PolicyService } from '../policy.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { CustomerService } from '../../customer/customer.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Customer } from '../../customer/customer.model';
 
 @Component({
   selector: 'app-create-policy',
@@ -13,10 +19,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './create-policy.component.html',
   styleUrls: ['./create-policy.component.css'],
 })
-export class CreatePolicyComponent {
+export class CreatePolicyComponent implements OnInit {
   policyForm: FormGroup;
   premiumAmount: string = '';
-  customerId:any;
+  customerId: any;
+  selectedCustomer: any;
 
   formatCurrency(event: any) {
     const input = event.target.value;
@@ -37,35 +44,59 @@ export class CreatePolicyComponent {
     private route: ActivatedRoute
   ) {
     this.policyForm = new FormGroup({
-    
       policy_type: new FormControl('', Validators.required),
       exp_date: new FormControl('', Validators.required),
       term_length: new FormControl('', Validators.required),
-      premium_amount: new FormControl('',[ Validators.required,Validators.pattern(/^\d+(\.\d{0,2})?$/)]),
+      premium_amount: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\d+(\.\d{0,2})?$/),
+      ]),
       insurance_company_id: new FormControl('', Validators.required),
-
     });
 
     // Get customer_id from route parameters
     const customerId = this.route.snapshot.params['customer_id'];
 
     // Set the customer_id value in the form group
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      const customerId = +params['id']; // Extract agent ID from route parameters
+      console.log('customerId:', customerId);
+      this.customerService
+        .getCustomerById(customerId)
+        .subscribe((data: Customer) => {
+          this.selectedCustomer = data;
+          console.log(this.selectedCustomer)
+          // Set the customer details
+        });
+    });
+
+
 
   }
 
+
+
+
+
   onAddPolicy() {
+    const customerId = this.route.snapshot.params['customer_id'];
 
     const policyData = {
-      customer_id: this.customerId,
-      policy_type: this.policyForm.get('policy_type')?.value,
-      exp_date: this.policyForm.get('exp_date')?.value,
-      term_length: this.policyForm.get('term_length')?.value,
-      premium_amount: this.policyForm.get('premium_amount')?.value,
-      insurance_company_id: this.policyForm.get('insurance_company_id')?.value,
-
+      policy: {
+        policy_type: this.policyForm.get('policy_type')?.value,
+        exp_date: this.policyForm.get('exp_date')?.value,
+        term_length: this.policyForm.get('term_length')?.value,
+        premium_amount: this.policyForm.get('premium_amount')?.value,
+        insurance_company_id: this.policyForm.get('insurance_company_id')
+          ?.value,
+        customer_id: this.customerId,
+      },
     };
-
-    this.policyService.addPolicy(policyData).subscribe({
+    console.log('Policy Data:', policyData); // Log policyData object
+    this.policyService.addPolicy(policyData,customerId).subscribe({
       next: (res: any) => {
         console.log('Policy Successful', res);
         const policyId = res.policy.id;
@@ -74,7 +105,7 @@ export class CreatePolicyComponent {
       error: (error: any) => {
         console.error('Error adding policy:', error);
         // Handle error here
-      }
+      },
     });
   }
 }

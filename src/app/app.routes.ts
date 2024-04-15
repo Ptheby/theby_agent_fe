@@ -61,7 +61,7 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'create-policy',
+    path: 'customers/:id/create-policy',
     loadComponent: () =>
       import('./features/policy/create-policy/create-policy.component').then(
         (c) => c.CreatePolicyComponent

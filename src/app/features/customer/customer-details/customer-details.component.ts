@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
 })
 export class CustomerDetailsComponent implements OnInit {
   selectedCustomer: Customer | undefined;
-  customerId: any;
+  customerId: number|undefined;
   agentId: any;
   showAssignAgent: boolean = false;
   customers: Customer[] = [];
@@ -28,9 +28,9 @@ export class CustomerDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const customerId = +params['id']; // Extract customer ID from route parameters
-      console.log('CustomerID:', customerId);
-      this.customerService.getCustomerById(customerId).subscribe((data: Customer) => {
+      this.customerId = +params['id']; // Extract customer ID from route parameters
+      console.log('CustomerID:', this.customerId);
+      this.customerService.getCustomerById(this.customerId).subscribe((data: Customer) => {
         this.selectedCustomer = data;
         console.log(this.selectedCustomer);
         // Set the customer details
@@ -93,7 +93,12 @@ export class CustomerDetailsComponent implements OnInit {
       }
     );
   }
-  openAddPolicy(){
-    this.router.navigate(['create-policy'])
+  openAddPolicy(): void {
+    if (this.customerId) {
+      console.log(this.customerId);
+      this.router.navigate([`customers/${this.customerId}/create-policy`]);
+    } else {
+      console.error('customerId is not defined');
+    }
   }
 }
