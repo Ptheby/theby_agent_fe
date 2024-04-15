@@ -48,6 +48,20 @@ export class CustomerService {
       })
     );
   }
+  ////this needs to be changed for only the logged in agents customers
+  getAllYourCustomers(agentId: number): Observable<Customer[]> {
+    return this.http.get<any>(`${this.apiUrl}/customers?agent_id=${agentId}`).pipe(
+      map((response: any) => {
+        const customers: Customer[] = response.customers;
+        return customers.reverse(); // Reverse the array before returning
+      }),
+      catchError((error) => {
+        console.error('Error fetching customers:', error);
+        return throwError(error);
+      })
+    );
+  }
+
   deleteCustomer(customerId: any): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/customers/${customerId}`).pipe(
       catchError((error) => {

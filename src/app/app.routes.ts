@@ -74,6 +74,13 @@ export const routes: Routes = [
         (c) => c.PolicyDetailsComponent
       ),
   },
+  {
+    path: 'your-customers',
+    loadChildren: () =>
+      import('./features/customer/your-customers/your-customers.component').then(
+        (m) => m.YourCustomersComponent
+      ),
+    },
 
   {
     path: 'agents/:id',
