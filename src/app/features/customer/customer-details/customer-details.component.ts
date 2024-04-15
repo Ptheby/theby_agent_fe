@@ -101,4 +101,8 @@ export class CustomerDetailsComponent implements OnInit {
       console.error('customerId is not defined');
     }
   }
-}
+  onViewPolicy() {
+    const customerId = this.route.snapshot.params['customer_id'];
+    const policyId = this.route.snapshot.params['policy_id'];
+    this.router.navigate([`customers/${customerId}/policy/${policyId}`]);
+  }}

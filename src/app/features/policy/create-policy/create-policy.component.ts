@@ -100,7 +100,7 @@ export class CreatePolicyComponent implements OnInit {
       next: (res: any) => {
         console.log('Policy Successful', res);
         const policyId = res.policy.id;
-        this.router.navigate(['policy', policyId]);
+        this.router.navigate([`customers/${customerId}/policy/${policyId}`]);
       },
       error: (error: any) => {
         console.error('Error adding policy:', error);
