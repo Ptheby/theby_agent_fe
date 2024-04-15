@@ -82,7 +82,7 @@ export class CreatePolicyComponent implements OnInit {
 
 
   onAddPolicy() {
-    const customerId = this.route.snapshot.params['customer_id'];
+    const customerId = this.route.snapshot.params['id'];
 
     const policyData = {
       policy: {
@@ -92,7 +92,7 @@ export class CreatePolicyComponent implements OnInit {
         premium_amount: this.policyForm.get('premium_amount')?.value,
         insurance_company_id: this.policyForm.get('insurance_company_id')
           ?.value,
-        customer_id: this.customerId,
+        customer_id: customerId,
       },
     };
     console.log('Policy Data:', policyData); // Log policyData object
