@@ -5,6 +5,7 @@ import { Customer } from '../customer.model';
 import { AgentService } from '../../../agent/agent.service';
 import { RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Agent } from '../../../agent/agent';
 
 @Component({
   selector: 'app-customer-details',
@@ -22,12 +23,14 @@ export class CustomerDetailsComponent implements OnInit {
   customers: Customer[] = [];
 
 
+
   constructor(
     private customerService: CustomerService,
     private route: ActivatedRoute,
     private router: Router,
     private agentService: AgentService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+
 
 
   ) {}
