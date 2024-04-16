@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { ViewCustomersComponent } from './features/customer/view-customers/view-customers.component';
 import { CustomerDetailsComponent } from './features/customer/customer-details/customer-details.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { YourCustomersComponent } from './features/customer/your-customers/your-customers.component';
 
 
 
@@ -21,7 +22,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NavbarComponent,
     ViewCustomersComponent,
     CustomerDetailsComponent,
-    MatSnackBarModule
+    MatSnackBarModule,
+    YourCustomersComponent
 
 
 

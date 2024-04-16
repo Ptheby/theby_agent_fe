@@ -49,8 +49,9 @@ export class CustomerService {
     );
   }
   ////this needs to be changed for only the logged in agents customers
-  getAllYourCustomers(agentId: number): Observable<Customer[]> {
-    return this.http.get<any>(`${this.apiUrl}/customers?agent_id=${agentId}`).pipe(
+  getAllYourCustomers(): Observable<Customer[]> {
+    console.log()
+    return this.http.get<any>(`${this.apiUrl}/your-customers`).pipe(
       map((response: any) => {
         const customers: Customer[] = response.customers;
         return customers.reverse(); // Reverse the array before returning

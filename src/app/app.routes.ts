@@ -76,7 +76,7 @@ export const routes: Routes = [
   },
   {
     path: 'your-customers',
-    loadChildren: () =>
+    loadComponent: () =>
       import('./features/customer/your-customers/your-customers.component').then(
         (m) => m.YourCustomersComponent
       ),

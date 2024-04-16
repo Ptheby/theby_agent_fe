@@ -5,11 +5,12 @@ import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { AgentService } from '../agent/agent.service';
 import { Agent } from '../agent/agent';
+import {YourCustomersComponent } from '../features/customer/your-customers/your-customers.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule,YourCustomersComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -71,4 +72,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logout() {
     this.logout = this.authService.logout;
   }
+toYourCustomers(){
+  this.router.navigate(['your-customers'])
+}
 }

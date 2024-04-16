@@ -68,11 +68,9 @@ export class AuthService {
   getUserInfo(): Observable<User> {
     const apiUrl = environment.apiUrl;
 
-    return this.http.get<User>(apiUrl+'/user/:id');
+    // Assuming the server knows the currently logged-in user based on the authentication token/session
+    return this.http.get<User>(`${apiUrl}/user`);
   }
-
-
-
 
 
 
