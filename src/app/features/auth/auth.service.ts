@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { User } from './user';
@@ -12,81 +11,76 @@ import { Agent } from '../../agent/agent';
   providedIn: 'root',
 })
 export class AuthService {
-  private userSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
-  private readonly tokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+  user = new BehaviorSubject<User | null>(null);
+  private readonly tokenSubject = new BehaviorSubject<string | null>(null);
   private readonly jwtHelper: JwtHelperService = new JwtHelperService();
 
   constructor(private http: HttpClient, private router: Router) {
     this.checkTokenExpiration();
   }
 
-
-  login(email: string, password: string): Observable<{ token: string }> {
+  login(email: string, password: string) {
     const apiUrl = environment.apiUrl;
-    return this.http.post<{ token: string }>(`${apiUrl}/login`, { email, password }).pipe(
-      tap((res) => {
-        this.setToken(res.token);
-      }),
-      catchError((error) => {
-        return throwError(error);
+    return this.http
+      .post<{ token: string }>(apiUrl + '/login', {
+        email,
+        password,
       })
-    );
+      .pipe(
+        catchError((error) => {
+          // Handle HTTP errors or custom errors from the server
+          return throwError(error);
+        })
+      );
   }
 
-  setToken(token: string): void {
+  setToken(token: string) {
     localStorage.setItem('token', token);
     this.tokenSubject.next(token);
-    this.getUserInfo().subscribe(); // Update user information after setting the token
+    this.checkTokenExpiration();
   }
 
-  getToken(): string | null {
+  getToken() {
     return localStorage.getItem('token');
   }
 
-  isLoggedIn(): boolean {
-    const token = this.getToken();
-    return !!token && !this.jwtHelper.isTokenExpired(token);
-  }
+  isLoggedIn() {
 
-  logout(): void {
+    return !!this.getToken();
+  }
+  // isLoggedIn() {
+  //   const token = this.getToken();
+  //   return !!token && !this.jwtHelper.isTokenExpired(token);
+  // }      commenting out to use the above which is used in pickup sports
+
+  logout() {
     localStorage.removeItem('token');
     this.tokenSubject.next(null);
-    this.userSubject.next(null);
     this.router.navigate(['/login']);
   }
-  signUp(user: any): Observable<any> {
+
+  signUp(user: any) {
     const apiUrl = environment.apiUrl;
-    return this.http.post<any>(`${apiUrl}/users/create_with_agent`, user).pipe(
-      tap(() => {
-
-      }),
-      catchError((error) => {
-        return throwError(error);
-      })
-    );
+    console.log(this.user);
+    return this.http.post(apiUrl + '/users/create_with_agent', user);
   }
-
-
 
   getUserInfo(): Observable<User> {
     const apiUrl = environment.apiUrl;
-    return this.http.get<User>(`${apiUrl}/user`).pipe(
-      tap((user) => {
-        this.userSubject.next(user);
-      })
-    );
+
+    // Assuming the server knows the currently logged-in user based on the authentication token/session
+    return this.http.get<User>(`${apiUrl}/user`);
+
   }
 
-  getCurrentUser(): Observable<User | null> {
-    return this.userSubject.asObservable();
-  }
 
-  private checkTokenExpiration(): void {
+
+
+
+  private checkTokenExpiration() {
     const token = this.getToken();
     if (token && this.jwtHelper.isTokenExpired(token)) {
       this.logout();
-    } else {
-      this.getUserInfo().subscribe(); // Update user information if the token is not expired
     }
   }
 }

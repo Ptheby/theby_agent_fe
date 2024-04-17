@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   userSub: Subscription = new Subscription();
   agents: Agent[] = [];
   user: User | null = null;
+
   private subscription: Subscription | undefined;
 
   constructor(
@@ -34,12 +35,21 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.userSub = this.authService.getUserInfo().subscribe({
       next: (user: User) => {
         this.isAuthenticated = !!user;
-        this.userEmail = user.email; // Assuming email is a property of User
+        this.user=user;
       },
       error: (error: any) => {
         console.error('Error fetching user:', error);
       },
     });
+    // this.authService.getCurrentUser().subscribe((user) => {
+    //   if (user) {
+    //     const first_name = this.user?.agent?.first_name
+    //     console.log(user);
+    //   } else {
+    //     // User is not logged in
+    //     console.log('User not logged in');
+    //   }
+    // });
 
 
     this.subscription = this.agentService.getAllAgents().subscribe({
