@@ -89,6 +89,13 @@ export const routes: Routes = [
         (c) => c.AgentDetailsComponent
       ),
   },
+  {
+    path: 'about-lighthouse',
+    loadComponent: () =>
+      import('./about-lighthouse/about-lighthouse.component').then(
+        (c) => c.AboutLighthouseComponent
+      ),
+  },
 
   { path: '', pathMatch: 'full', redirectTo: '/login' },
 ];

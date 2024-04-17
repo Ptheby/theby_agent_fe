@@ -4,7 +4,7 @@
   <nav>
     <ul>
       <li><a routerLink="/dashboard">Home</a></li>
-      <li><a href="#0">What we do</a></li>
+      <li><a routerLink="/about-lighthouse">What we do</a></li>
       @if(isLoggedIn()){  <li>
         <a class="agentslist" href="#0">Agents</a>
         <ul>
@@ -16,7 +16,7 @@
         </ul>
       </li>}
       @if(isLoggedIn()){ <li>
-        <a href="#0">Customers</a>
+        <a >Customers</a>
         <ul>
           <li><a routerLink="/add-customer">Add Customer</a></li>
           <li><a routerLink="/your-customers" >Your Customers</a></li>
