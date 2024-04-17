@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../auth/user';
 import { AuthService } from '../auth/auth.service';
+import { YourCustomersComponent } from '../customer/your-customers/your-customers.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [],
+  imports: [YourCustomersComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

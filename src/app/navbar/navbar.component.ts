@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AgentService } from '../agent/agent.service';
 import { Agent } from '../agent/agent';
 import {YourCustomersComponent } from '../features/customer/your-customers/your-customers.component';
+import { User } from '../features/auth/user';
 
 @Component({
   selector: 'app-navbar',
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   userEmail: any | null;
   userSub: Subscription = new Subscription();
   agents: Agent[] = [];
+  user: User | null = null;
   private subscription: Subscription | undefined;
 
   constructor(
@@ -29,11 +31,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.userSub = this.authService.user.subscribe((user) => {
-      this.isAuthenticated = !!user;
-      console.log(!user);
-      console.log(!!user);
+    this.userSub = this.authService.getUserInfo().subscribe({
+      next: (user: User) => {
+        this.isAuthenticated = !!user;
+        this.userEmail = user.email; // Assuming email is a property of User
+      },
+      error: (error: any) => {
+        console.error('Error fetching user:', error);
+      },
     });
+
 
     this.subscription = this.agentService.getAllAgents().subscribe({
       next: (data: Agent[]) => {
@@ -47,10 +54,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     // this.getAllAgents();
   }
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.userSub.unsubscribe();
   }
+
   getAllAgents(): void {
     this.agentService.getAllAgents().subscribe({
       next: (agents: Agent[]) => {

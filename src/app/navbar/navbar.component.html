@@ -25,6 +25,13 @@
           <!-- <li><a href="#0">PH</a></li> -->
         </ul>
       </li>}
+
+@if(isAuthenticated){<li>
+  <a> Welcome, {{user?.agent?.first_name}}</a>
+</li>
+
+}
+
       <div class="auth">
         <hr />
         @if(isLoggedIn()){
