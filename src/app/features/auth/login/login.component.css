@@ -7,14 +7,14 @@
   font-family: "Poppins", sans-serif;
 }
 img{
-  max-width: fit-content;
+  min-width: fit-content;
 }
 .body {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #4c3bec;
+  background: -webkit-linear-gradient(left, #4c3bec, #fdfdfd);
   padding: 130px;
 }
 .container {
@@ -104,6 +104,7 @@ input {
   justify-content: center;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+
 }
 .cover .text .text-1,
 .cover .text .text-2 {
@@ -111,6 +112,7 @@ input {
   font-weight: 600;
   color: #fff;
   text-align: center;
+  padding-bottom: 3px;
 }
 .cover .text .text-2 {
   font-size: 15px;

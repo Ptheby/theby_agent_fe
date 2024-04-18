@@ -26,8 +26,8 @@
         </ul>
       </li>}
 
-@if(!isAuthenticated){<li>
-  <a> Welcome, {{user?.agent?.first_name}}</a>
+@if(isLoggedIn()){<li>
+  <a> Welcome </a>
 </li>
 
 }

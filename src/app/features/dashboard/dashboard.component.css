@@ -8,4 +8,6 @@ p {
 }
 .body {
   background: -webkit-linear-gradient(left, #4c3bec, #fdfdfd);
+  display: flex;
+  flex-direction: column;
 }

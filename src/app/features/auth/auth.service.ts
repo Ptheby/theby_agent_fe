@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { User } from './user';
@@ -68,9 +68,36 @@ export class AuthService {
   getUserInfo(): Observable<User> {
     const apiUrl = environment.apiUrl;
 
-    // Assuming the server knows the currently logged-in user based on the authentication token/session
-    return this.http.get<User>(`${apiUrl}/user`);
+    // Attach the token to the request headers
+    const headers = {
+      Authorization: `Bearer ${this.getToken()}`
+    };
 
+    // Send a GET request to the /user endpoint
+    return this.http.get<User>(`${apiUrl}/user`, { headers });
+
+  }
+  getCurrentUser(): Observable<User> {
+    const apiUrl = environment.apiUrl;
+    const token = this.getToken();
+    if (!token) {
+      throw new Error('JWT token not found in local storage');
+    }
+
+    // Decode the JWT token to extract user information
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    console.log('Decoded JWT token:', decodedToken);
+
+    // Extract user ID from the decoded token
+    const userId = decodedToken.user_id;
+
+    // Make a request to fetch user information based on the extracted user ID
+    return this.http.get<User>(`${apiUrl}/user/${userId}`).pipe(
+      tap(user => {
+        // Set the current user property after fetching user information
+        this.user.next(user);
+      })
+    );
   }
 
 

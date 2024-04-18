@@ -11,6 +11,7 @@ import { AuthService } from '../auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from '../auth/auth.component';
 import { routes } from '../../../app.routes';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-up',
@@ -28,7 +29,7 @@ agentValidationErrors: string[] = [];
   'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
   'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
   'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
-  'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
+  'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY','The Shire'];
   isLoading = false;
   signupForm: FormGroup;
   user = {
@@ -45,7 +46,7 @@ agentValidationErrors: string[] = [];
   };
 name: any;
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService,private snackBar: MatSnackBar) {
     this.signupForm = new FormGroup({
       user: new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
@@ -85,6 +86,10 @@ name: any;
       this.authService.signUp(userData).subscribe({
         next: (res: any) => {
           console.log('Sign up successful', res);
+          this.snackBar.open('Signup successful', 'Close', {
+            duration: 3000,
+            panelClass: ['success-snackbar']
+          });
           // Redirect to login or another page
           this.router.navigate(['/login']);
         },

@@ -1,4 +1,12 @@
-<app-your-customers></app-your-customers>
+<div class="body">
+  @if(isLoggedIn()){<app-your-customers></app-your-customers>}
+  @if(!isLoggedIn()) {
+    <div class="container">
+      <h2>Please Sign-Up or Login to gain access to our application and start helping your clients today!</h2>
+    </div>
+  }
+</div>
+
 
 
 

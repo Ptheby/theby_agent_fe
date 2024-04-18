@@ -19,8 +19,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   userEmail: any | null;
   userSub: Subscription = new Subscription();
+  agentSub: Subscription |undefined;
   agents: Agent[] = [];
   user: User | null = null;
+  id = this.user?.id;
 
   private subscription: Subscription | undefined;
 
@@ -32,24 +34,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.userSub = this.authService.getUserInfo().subscribe({
+    this.userSub = this.authService.getCurrentUser().subscribe({
       next: (user: User) => {
         this.isAuthenticated = !!user;
-        this.user=user;
+        this.user = user;
       },
       error: (error: any) => {
         console.error('Error fetching user:', error);
-      },
+      }
     });
-    // this.authService.getCurrentUser().subscribe((user) => {
-    //   if (user) {
-    //     const first_name = this.user?.agent?.first_name
-    //     console.log(user);
-    //   } else {
-    //     // User is not logged in
-    //     console.log('User not logged in');
-    //   }
-    // });
+   
 
 
     this.subscription = this.agentService.getAllAgents().subscribe({
@@ -64,9 +58,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     // this.getAllAgents();
   }
   ngOnDestroy(): void {
-    this.userSub.unsubscribe();
+    if (this.userSub) {
+      this.userSub.unsubscribe();
+    }
+    if (this.agentSub) {
+      this.agentSub.unsubscribe();
+    }
   }
-
   getAllAgents(): void {
     this.agentService.getAllAgents().subscribe({
       next: (agents: Agent[]) => {
