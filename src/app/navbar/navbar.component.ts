@@ -5,13 +5,13 @@ import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { AgentService } from '../agent/agent.service';
 import { Agent } from '../agent/agent';
-import {YourCustomersComponent } from '../features/customer/your-customers/your-customers.component';
+import { YourCustomersComponent } from '../features/customer/your-customers/your-customers.component';
 import { User } from '../features/auth/user';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule,YourCustomersComponent],
+  imports: [RouterLink, CommonModule, YourCustomersComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   userEmail: any | null;
   userSub: Subscription = new Subscription();
-  agentSub: Subscription |undefined;
+  agentSub: Subscription | undefined;
   agents: Agent[] = [];
   user: User | null = null;
   id = this.user?.id;
@@ -41,10 +41,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
       },
       error: (error: any) => {
         console.error('Error fetching user:', error);
-      }
+      },
     });
-   
-
 
     this.subscription = this.agentService.getAllAgents().subscribe({
       next: (data: Agent[]) => {
@@ -86,7 +84,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logout() {
     this.logout = this.authService.logout;
   }
-toYourCustomers(){
-  this.router.navigate(['your-customers'])
-}
+  toYourCustomers() {
+    this.router.navigate(['your-customers']);
+  }
 }

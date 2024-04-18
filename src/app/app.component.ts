@@ -10,8 +10,6 @@ import { CustomerDetailsComponent } from './features/customer/customer-details/c
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { YourCustomersComponent } from './features/customer/your-customers/your-customers.component';
 
-
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -23,12 +21,7 @@ import { YourCustomersComponent } from './features/customer/your-customers/your-
     ViewCustomersComponent,
     CustomerDetailsComponent,
     MatSnackBarModule,
-    YourCustomersComponent
-
-
-
-
-
+    YourCustomersComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

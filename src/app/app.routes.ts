@@ -77,10 +77,10 @@ export const routes: Routes = [
   {
     path: 'your-customers',
     loadComponent: () =>
-      import('./features/customer/your-customers/your-customers.component').then(
-        (m) => m.YourCustomersComponent
-      ),
-    },
+      import(
+        './features/customer/your-customers/your-customers.component'
+      ).then((m) => m.YourCustomersComponent),
+  },
 
   {
     path: 'agents/:id',
