@@ -23,12 +23,12 @@
               alt=""
             />
             <div class="text">
-              <span class="text-1">Who Are You<br />Helping Today?</span>
+              <span class="text-1">Who Are You<br /><br>Helping Today?</span><br>
               <span class="text-2">Please Enter Your Customer</span>
             </div>
           </div>
           <div class="back">
-            <img class="backImg" src="images/backImg.jpg" alt="" />
+
             <div class="text">
               <span class="text-1"
                 >Complete miles of journey<br />with one step</span
@@ -69,7 +69,7 @@
                     <div class="input-box">
                       <i class="fas fa-calendar"></i>
                       <input
-                        type="text"
+                        type="date"
                         placeholder="yyyy-mm-dd"
                         formControlName="dob"
                       />
@@ -119,12 +119,23 @@
                         </div>
                         <div class="input-box">
                           <i class="fas fa-user"></i>
-                          <input
-                            type="text"
-                            placeholder="Enter your state"
-                            formControlName="state"
-
-                          />
+                          <select formControlName="state" class="state-select">
+                            <option value="">Select your state</option>
+                            <option
+                              *ngFor="let abbreviation of states"
+                              [value]="abbreviation"
+                            >
+                              {{ abbreviation }}
+                            </option>
+                          </select>
+                          <!-- <span
+                            *ngIf="
+                              !signupForm.get('agent.state')?.valid &&
+                              signupForm.get('agent.state')?.touched
+                            "
+                            class="help-block"
+                            >select a state</span
+                          > -->
                         </div>
                         <div class="input-box">
                           <i class="fas fa-user"></i>

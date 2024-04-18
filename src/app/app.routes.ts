@@ -96,6 +96,13 @@ export const routes: Routes = [
         (c) => c.AboutLighthouseComponent
       ),
   },
+  {
+    path: 'customers/:id/address',
+    loadComponent: () =>
+      import('./features/address/address.component').then(
+        (c) => c.AddressComponent
+      ),
+  },
 
   { path: '', pathMatch: 'full', redirectTo: '/login' },
 ];

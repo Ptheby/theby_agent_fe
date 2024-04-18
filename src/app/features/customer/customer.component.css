@@ -108,15 +108,15 @@ input {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.cover .text .text-1,
-.cover .text .text-2 {
+.cover .text .text-1
+ {
   font-size: 32px;
-  font-weight: 400;
+  font-weight: 500;
   color: #ffffff;
   text-align: center;
 }
 .cover .text .text-2 {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
 }
 .container .forms {
@@ -242,3 +242,36 @@ input {
     display: none;
   }
 }
+.input-box .help-block a {
+  text-decoration: none;
+}
+
+.input-box .help-block a:hover {
+  text-decoration: underline;
+}
+
+.select-container {
+  position: relative;
+}
+
+.input-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 0 30px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  appearance: none; /* Remove default dropdown arrow */
+  background: transparent; /* Set transparent background */
+  color: #7a7777;
+  cursor: pointer;
+}
+
+.input-box select:focus,
+.input-box select:valid {
+  border-color: #7d2ae8;
+}
+

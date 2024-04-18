@@ -8,15 +8,22 @@ import {
 import { Router } from '@angular/router';
 
 import { CustomerService } from './customer.service';
+import { CommonModule, NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule],
   standalone: true,
   styleUrls: ['./customer.component.css'],
 })
 export class CustomerComponent {
+  states:string[]=[   'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+  'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+  'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+  'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+  'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY','The Shire'];
   addCustomerForm: FormGroup;
 
   constructor(
