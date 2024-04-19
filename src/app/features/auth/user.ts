@@ -25,6 +25,7 @@ export class User {
           data.agent.first_name,
           data.agent.last_name,
           data.agent.npn,
+          data.agent.phone,
           data.agent.state,
           data.agent.userId,
           new Date(data.agent.createdAt),

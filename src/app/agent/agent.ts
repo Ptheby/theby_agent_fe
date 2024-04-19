@@ -9,6 +9,7 @@ export class Agent {
   first_name: string;
   last_name: string;
   npn: string;
+  phone:string;
   state: string;
   userId: number;
   createdAt?: Date;
@@ -22,6 +23,7 @@ export class Agent {
     first_name: string,
     last_name: string,
     npn: string,
+    phone:string,
     state: string,
     userId: number,
     @Optional() createdAt: Date,
@@ -34,6 +36,7 @@ export class Agent {
     this.first_name = first_name;
     this.last_name = last_name;
     this.npn = npn;
+    this.phone=phone;
     this.state = state;
     this.userId = userId;
     this.createdAt = createdAt;
