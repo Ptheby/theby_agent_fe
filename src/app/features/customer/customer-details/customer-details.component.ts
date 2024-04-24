@@ -10,50 +10,50 @@ import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-customer-details',
-  imports:[RouterModule,NgIf
-  ],
+  imports: [RouterModule, NgIf],
   templateUrl: './customer-details.component.html',
   styleUrls: ['./customer-details.component.css'],
-  standalone: true
+  standalone: true,
 })
 export class CustomerDetailsComponent implements OnInit {
   selectedCustomer: Customer | undefined;
-  customerId: number|undefined;
+  customerId: number | undefined;
   agentId: any;
   showAssignAgent: boolean = false;
   customers: Customer[] = [];
-
-
-
 
   constructor(
     private customerService: CustomerService,
     private route: ActivatedRoute,
     private router: Router,
     private agentService: AgentService,
-    private _snackBar: MatSnackBar,
-
-
-
-
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.customerId = +params['id']; // Extract customer ID from route parameters
+      this.customerId = +params['id'];
       console.log('CustomerID:', this.customerId);
       this.customerService.getCustomerById(this.customerId).subscribe((data: Customer) => {
         this.selectedCustomer = data;
-        console.log(this.selectedCustomer);
-        // Set the customer details
+      
 
-        // Now that you have the customer ID, you can call the method to assign the agent
+        // Get the agent ID from the customer object
+        const agentId = data?.agent_id;
+
+        // Use optional chaining to access agent safely
+        if (agentId) {
+          this.agentService.getAgentById(agentId)
+            .subscribe(agent => {
+              if (this.selectedCustomer) {
+                this.selectedCustomer.agent = agent;
+
+              }
+            });
+        }
       });
     });
   }
-
-
-
 
 
   toggleAssignAgent(): void {
@@ -64,7 +64,9 @@ export class CustomerDetailsComponent implements OnInit {
   deleteCustomer(customerId: any): void {
     this.customerService.deleteCustomer(customerId).subscribe({
       next: () => {
-        this.customers = this.customers.filter((customer) => customer.id !== customerId);
+        this.customers = this.customers.filter(
+          (customer) => customer.id !== customerId
+        );
         this.router.navigate(['/customers']);
       },
       error: (error) => {
@@ -76,14 +78,18 @@ export class CustomerDetailsComponent implements OnInit {
 
   confirmDelete(customerId: any): void {
     // Display confirmation dialog
-    const confirmed = window.confirm('Are you sure you want to delete this customer?');
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this customer?'
+    );
 
     // If user confirms, delete the customer
     if (confirmed) {
       this.customerService.deleteCustomer(customerId).subscribe({
         next: () => {
           // Remove the deleted customer from the local array
-          this.customers = this.customers.filter((customer) => customer.id !== customerId);
+          this.customers = this.customers.filter(
+            (customer) => customer.id !== customerId
+          );
         },
         error: (error) => {
           console.error('Error deleting customer:', error);
@@ -111,19 +117,22 @@ export class CustomerDetailsComponent implements OnInit {
       (response) => {
         this.selectedCustomer = response;
         console.log('Agent assigned successfully:', response);
-        this._snackBar.open(`You have claimed ${this.selectedCustomer?.first_name}!`, 'Close', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'bottom',
-       // Add the custom class here
-        });
+        this._snackBar.open(
+          `You have claimed ${this.selectedCustomer?.first_name}!`,
+          'Close',
+          {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+            // Add the custom class here
+          }
+        );
       },
       (error) => {
         console.error('Error assigning agent:', error);
       }
     );
   }
-
 
   openAddPolicy(): void {
     if (this.customerId) {
@@ -137,7 +146,5 @@ export class CustomerDetailsComponent implements OnInit {
     const customerId = this.route.snapshot.params['customer_id'];
     const policyId = this.route.snapshot.params['policy_id'];
     this.router.navigate([`customers/${customerId}/policy/${policyId}`]);
-  }}
-
-
-  
+  }
+}
