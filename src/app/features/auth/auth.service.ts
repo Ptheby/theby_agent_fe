@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { User } from './user';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Agent } from '../../agent/agent';
 
 @Injectable({
   providedIn: 'root',
@@ -22,12 +21,15 @@ export class AuthService {
   login(email: string, password: string) {
     const apiUrl = environment.apiUrl;
     return this.http
-      .post<{ token: string }>(apiUrl + '/login', {
-        email,
-        password,
-      })
+      .post<{ token: string, user: User }>(`${apiUrl}/login`, { email, password })
       .pipe(
-        catchError((error) => {
+        tap(response => {
+          // Assuming the server returns the user data upon successful login
+          this.user.next(response.user);
+          console.log('Logged in with token:', response.token);
+          this.setToken(response.token);
+        }),
+        catchError(error => {
           // Handle HTTP errors or custom errors from the server
           return throwError(error);
         })
@@ -45,13 +47,8 @@ export class AuthService {
   }
 
   isLoggedIn() {
-
     return !!this.getToken();
   }
-  // isLoggedIn() {
-  //   const token = this.getToken();
-  //   return !!token && !this.jwtHelper.isTokenExpired(token);
-  // }      commenting out to use the above which is used in pickup sports
 
   logout() {
     localStorage.removeItem('token');
@@ -75,8 +72,8 @@ export class AuthService {
 
     // Send a GET request to the /user endpoint
     return this.http.get<User>(`${apiUrl}/user`, { headers });
-
   }
+
   getCurrentUser(): Observable<User> {
     const apiUrl = environment.apiUrl;
     const token = this.getToken();
@@ -92,17 +89,18 @@ export class AuthService {
     const userId = decodedToken.user_id;
 
     // Make a request to fetch user information based on the extracted user ID
-    return this.http.get<User>(`${apiUrl}/user/${userId}`).pipe(
+    return this.http.get<User>(`${apiUrl}/users/${userId}`).pipe(
       tap(user => {
         // Set the current user property after fetching user information
         this.user.next(user);
+        console.log("user info",user)
+      }),
+      catchError(error => {
+        // Handle HTTP errors or custom errors from the server
+        return throwError(error);
       })
     );
   }
-
-
-
-
 
   private checkTokenExpiration() {
     const token = this.getToken();

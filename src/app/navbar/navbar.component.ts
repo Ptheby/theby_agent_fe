@@ -38,6 +38,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       next: (user: User) => {
         this.isAuthenticated = !!user;
         this.user = user;
+        console.log("current user:", user)
       },
       error: (error: any) => {
         console.error('Error fetching user:', error);
